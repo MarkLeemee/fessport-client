@@ -3,10 +3,7 @@ import map, { mapSaga } from './map';
 import login, { actionWatcher } from './sign';
 import userInfo, { userInfoSaga } from './userInfo';
 import image, { imageSaga } from './image';
-import boardData, { boardDataSaga } from './board';
-import participant, { participantSaga } from './participant';
-import commentData, { commentDataSaga } from './comment';
-import { all, fork } from 'redux-saga/effects';
+import { all } from 'redux-saga/effects';
 import festival, { festivalSaga } from './festival';
 import artist, { artistSaga } from './artist';
 import category, { categorySaga } from './category';
@@ -16,9 +13,6 @@ const rootReducer = combineReducers({
   userInfo,
   image,
   login,
-  boardData,
-  participant,
-  commentData,
   festival,
   artist,
   category,
@@ -30,9 +24,6 @@ export function* rootSaga() {
     userInfoSaga(),
     imageSaga(),
     actionWatcher(),
-    boardDataSaga(),
-    participantSaga(),
-    commentDataSaga(),
     festivalSaga(),
     artistSaga(),
     categorySaga(),
