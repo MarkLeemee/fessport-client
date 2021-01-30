@@ -1695,6 +1695,98 @@
       ]
     }
   ],
+  "wish": {
+    "_id": "6006e148d41f32725d12e1fd",
+    "wishfestivals": [
+      {
+        "_id": "6007158d433bf3a0fda619ed",
+        "name": "코첼",
+        "poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28"
+      },
+      {
+        "_id": "6007158d433bf3a0fda619ed",
+        "name": "코첼",
+        "poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28"
+      },
+      {
+        "_id": "6007158d433bf3a0fda619ed",
+        "name": "코첼",
+        "poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28"
+      },
+      {
+        "_id": "6007158d433bf3a0fda619ed",
+        "name": "코첼",
+        "poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28"
+      },
+      {
+        "_id": "6007158d433bf3a0fda619ed",
+        "name": "코첼",
+        "poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28"
+      },
+      {
+        "_id": "6007158d433bf3a0fda619ed",
+        "name": "코첼",
+        "poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28"
+      },
+      {
+        "_id": "6007158d433bf3a0fda619ed",
+        "name": "코첼",
+        "poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28"
+      },
+      {
+        "_id": "6007158d433bf3a0fda619ed",
+        "name": "코첼",
+        "poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28"
+      }
+    ],
+    "wishArtist": [
+      {
+        "_id": "6009a3aa55efce83112ccf7b",
+        "name": "박효신",
+        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
+      },
+      {
+        "_id": "6009a3aa55efce83112ccf7b",
+        "name": "박효신",
+        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
+      },
+      {
+        "_id": "6009a3aa55efce83112ccf7b",
+        "name": "박효신",
+        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
+      },
+      {
+        "_id": "6009a3aa55efce83112ccf7b",
+        "name": "박효신",
+        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
+      },
+      {
+        "_id": "6009a3aa55efce83112ccf7b",
+        "name": "박효신",
+        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
+      },
+      {
+        "_id": "6009a3aa55efce83112ccf7b",
+        "name": "박효신",
+        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
+      },
+      {
+        "_id": "6009a3aa55efce83112ccf7b",
+        "name": "박효신",
+        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
+      },
+      {
+        "_id": "6009a3aa55efce83112ccf7b",
+        "name": "박효신",
+        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
+      },
+      {
+        "_id": "6009a3aa55efce83112ccf7b",
+        "name": "박효신",
+        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
+      }
+    ]
+  },
   "visit": {},
   "unvisited": {},
   "like": {},

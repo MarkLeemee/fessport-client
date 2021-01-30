@@ -85,11 +85,10 @@ const TitleText = styled.div`
   position: absolute;
   top: 20px;
   left: 30px;
+  padding: 10px;
   color: rgba(0, 0, 0);
-  /* background: rgba(0, 0, 0, 0.1); */
   font-size: 1.5em;
   font-weight: 600;
-  padding: 10px;
   border-radius: 5px;
   z-index: 99;
 `;
@@ -102,22 +101,22 @@ const BackgroundImage = styled.img`
 `;
 
 const FestivalStamp = styled.img<{ y: number; x: number }>`
-  object-fit: contain;
   position: absolute;
   top: ${(props) => props.y}px;
   left: ${(props) => props.x}px;
   width: 150px;
   height: 150px;
+  object-fit: contain;
 `;
 
 const DownButton = styled.img`
-  object-fit: cover;
   position: absolute;
   top: 90%;
   left: 45%;
   width: 100px;
   height: 100px;
   opacity: 0.8;
+  object-fit: cover;
   z-index: 99;
 `;
 

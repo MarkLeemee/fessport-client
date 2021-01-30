@@ -2,54 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export function Dropdown(): JSX.Element {
-  const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
-
-  const MenuItems = [
-    {
-      title: 'Companions',
-      path: '/companion',
-      cName: 'dropdown-link',
-    },
-    {
-      title: 'Sell & Buy',
-      path: '/resell',
-      cName: 'dropdown-link',
-    },
-    {
-      title: 'Review',
-      path: '/review',
-      cName: 'dropdown-link',
-    },
-  ];
-
-  return (
-    <>
-      <Ul
-        onClick={handleClick}
-        className={click ? 'dropdown-menu clicked' : 'dropdown-menu'}
-      >
-        {MenuItems.map((item, index) => {
-          return (
-            <Li key={index}>
-              <StyledLink
-                className={item.cName}
-                to={item.path}
-                onClick={() => setClick(false)}
-              >
-                {/* {item.icon} */}
-                {item.title}
-              </StyledLink>
-              <div className="modal__break" />
-            </Li>
-          );
-        })}
-      </Ul>
-    </>
-  );
-}
-
 export function MyDropdown(): JSX.Element {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -63,11 +15,6 @@ export function MyDropdown(): JSX.Element {
     {
       title: 'Wish List',
       path: '/wishlist',
-      cName: 'dropdown-link',
-    },
-    {
-      title: 'My Post',
-      path: '/mypost',
       cName: 'dropdown-link',
     },
   ];

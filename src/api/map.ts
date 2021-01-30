@@ -1,4 +1,5 @@
 import axios from 'axios';
+axios.defaults.withCredentials = true;
 
 export async function getMapData(): Promise<IMap[] | void> {
   const response = await axios.get<IMap[]>('/map');

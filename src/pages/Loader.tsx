@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactLoading from 'react-loading';
+
 function Loader() {
   return (
     <div className="contentWrap">
@@ -24,4 +25,5 @@ function Loader() {
     </div>
   );
 }
+
 export default Loader;
