@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Loader from '../pages/Loader';
+import ErrorMessage from '../pages/ErrorMessage';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../modules';
@@ -24,14 +25,14 @@ const WishListContainer = (): JSX.Element => {
     <>
       <BackgorundImage />
       {loading && <Loader />}
-      {error && <p style={{ textAlign: 'center' }}>Error!!!</p>}
+      {error && <ErrorMessage />}
       {data && (
         <WishListPresenter>
           <FestivalCategory>
             <FestivalCategoryHead> Festival Wish List </FestivalCategoryHead>
             <FestivalSection>
               {data.wishfestivals &&
-                data.wishfestivals.map((item) => (
+                data.wishfestivals.map((item, index) => (
                   <FestivalLink
                     key={item._id}
                     to={`/festival/detail/${item._id}`}

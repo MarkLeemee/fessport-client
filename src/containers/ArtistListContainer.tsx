@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import Loader from '../pages/Loader';
+import ErrorMessage from '../pages/ErrorMessage';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../modules';
@@ -103,7 +104,7 @@ const ArtistListContainer = (): JSX.Element => {
     <>
       <BackgorundImage />
       {loading && <Loader />}
-      {error && <p style={{ textAlign: 'center' }}>Error!!!</p>}
+      {error && <ErrorMessage />}
       <ListPresenter>
         <ArtistCategory>
           <ArtistCategoryHead> Artist List </ArtistCategoryHead>
@@ -186,6 +187,10 @@ const ArtistCategory = styled.div`
   flex-direction: column;
   width: 30%;
   background-color: rgba(0, 0, 0, 0.5);
+
+  @media only screen and (max-width: 960px) {
+    display: none;
+  }
 `;
 
 const ArtistCategoryHead = styled.div`
@@ -228,6 +233,11 @@ const ContentsSection = styled.div`
   justify-content: center;
   width: 70%;
   margin-left: 5%;
+
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+    margin: 0%;
+  }
 `;
 
 const CategorySection = styled.div`

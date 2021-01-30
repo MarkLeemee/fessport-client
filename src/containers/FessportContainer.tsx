@@ -4,6 +4,7 @@ import Collector from '../components/Collector';
 import Badge from '../components/Badge';
 import styled from 'styled-components';
 import Loader from '../pages/Loader';
+import ErrorMessage from '../pages/ErrorMessage';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../modules';
@@ -59,7 +60,7 @@ const FessportContainer = (): JSX.Element => {
     <>
       <BackgorundImage />
       {loading && <Loader />}
-      {error && <p style={{ textAlign: 'center' }}>Error!!!</p>}
+      {error && <ErrorMessage />}
       {data && (
         <FessportPresenter>
           <UserInfo

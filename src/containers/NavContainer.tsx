@@ -14,7 +14,7 @@ const NavContainer = (): JSX.Element => {
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
-  const { login } = useSelector((state: RootState) => state.login.userInfo);
+  const { isLogin } = useSelector((state: RootState) => state.sign);
 
   const handleScrollUp = () => {
     window.scrollTo({
@@ -106,7 +106,7 @@ const NavContainer = (): JSX.Element => {
             </Link>
             {myDropdown && <MyDropdown />}
           </li>
-          {!login ? (
+          {!isLogin ? (
             <li className="nav-item">
               <li className="nav-item">
                 <a className="nav-links" onClick={toggleModal}>

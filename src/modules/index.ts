@@ -4,7 +4,7 @@ import map, { mapSaga } from './map';
 import festival, { festivalSaga } from './festival';
 import artist, { artistSaga } from './artist';
 import wish, { wishSaga } from './wish';
-import login, { actionWatcher } from './sign';
+import sign, { signSaga } from './sign';
 import userInfo, { userInfoSaga } from './userInfo';
 import category, { categorySaga } from './category';
 import image, { imageSaga } from './image';
@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
   festival,
   artist,
   wish,
-  login,
+  sign,
   userInfo,
   category,
   image,
@@ -26,7 +26,7 @@ export function* rootSaga() {
     festivalSaga(),
     artistSaga(),
     wishSaga(),
-    actionWatcher(),
+    signSaga(),
     userInfoSaga(),
     imageSaga(),
     categorySaga(),

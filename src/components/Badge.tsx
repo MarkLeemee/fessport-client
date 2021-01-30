@@ -14,7 +14,7 @@ const Badge = ({
       <TitleText> Festival Challenge (badge) </TitleText>
       <Temp>
         <TitleName>
-          페스티벌 정복 (총 1 / 3 / 6 / 9 / 12개 페스티벌 방문)
+          페스티벌 정복 (총 3 / 6 / 9 / 12 / 15개 페스티벌 방문)
         </TitleName>
         <TitleBox ref={badgeRef}>
           {badge &&
@@ -29,7 +29,7 @@ const Badge = ({
         </TitleBox>
       </Temp>
       <Temp>
-        <TitleName> 세계 정복 (총 1 / 3 / 6 / 9 / 12개국 방문) </TitleName>
+        <TitleName> 세계 정복 (총 3 / 6 / 9 / 12 / 15개국 방문) </TitleName>
         <TitleBox>
           {badge &&
             badge

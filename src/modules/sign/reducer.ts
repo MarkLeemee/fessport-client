@@ -1,78 +1,64 @@
 import { createReducer } from 'typesafe-actions';
-import { SigninAction, LoginResponse } from './types';
+import { SignState, SignAction } from './types';
 import {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE,
-  SIGNUP_REQUEST,
-  SIGNUP_SUCCESS,
-  SIGNUP_FAILURE,
+  POST_SIGNIN,
+  POST_SIGNIN_SUCCESS,
+  POST_SIGNIN_ERROR,
+  POST_SIGNUP,
+  POST_SIGNUP_SUCCESS,
+  POST_SIGNUP_ERROR,
 } from './actions';
 
-const initialState: LoginResponse = {
-  userInfo: {
-    login: false,
-    loading: false,
-    error: null,
-    data: null,
-  },
+const initialState: SignState = {
+  isLogin: false,
+  loading: false,
+  error: null,
+  data: null,
 };
 
-const login = createReducer<LoginResponse, SigninAction>(initialState, {
-  [LOGIN_REQUEST]: (state) => ({
+const sign = createReducer<SignState, SignAction>(initialState, {
+  [POST_SIGNIN]: (state) => ({
     ...state,
-    userInfo: {
-      login: false,
-      loading: true,
-      error: null,
-      data: null,
-    },
+    isLogin: false,
+    loading: true,
+    error: null,
+    data: null,
   }),
-  [LOGIN_SUCCESS]: (state, action) => ({
+  [POST_SIGNIN_SUCCESS]: (state, action) => ({
     ...state,
-    userInfo: {
-      login: true,
-      loading: false,
-      error: null,
-      data: action.payload,
-    },
+    isLogin: true,
+    loading: false,
+    error: null,
+    data: action.payload,
   }),
-  [LOGIN_FAILURE]: (state, action) => ({
+  [POST_SIGNIN_ERROR]: (state, action) => ({
     ...state,
-    userInfo: {
-      login: false,
-      loading: false,
-      error: action.payload,
-      data: null,
-    },
+    isLogin: false,
+    loading: false,
+    error: action.payload,
+    data: null,
   }),
-  [SIGNUP_REQUEST]: (state) => ({
+  [POST_SIGNUP]: (state) => ({
     ...state,
-    userInfo: {
-      login: false,
-      loading: true,
-      error: null,
-      data: null,
-    },
+    isLogin: false,
+    loading: true,
+    error: null,
+    data: null,
   }),
-  [SIGNUP_SUCCESS]: (state, action) => ({
+  [POST_SIGNUP_SUCCESS]: (state, action) => ({
     ...state,
-    userInfo: {
-      login: false,
-      loading: false,
-      error: null,
-      data: action.payload,
-    },
+    isLogin: false,
+    loading: false,
+    error: null,
+    data: action.payload,
   }),
-  [SIGNUP_FAILURE]: (state, action) => ({
+  [POST_SIGNUP_ERROR]: (state, action) => ({
     ...state,
-    userInfo: {
-      login: false,
-      loading: false,
-      error: action.payload,
-      data: null,
-    },
+    isLogin: false,
+    loading: false,
+    error: action.payload,
+    data: null,
   }),
 });
 
-export default login;
+export default sign;

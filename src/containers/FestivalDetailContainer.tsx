@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ReactPlayer from 'react-player';
 import Slider from 'react-slick';
 import Loader from '../pages/Loader';
+import ErrorMessage from '../pages/ErrorMessage';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../modules';
@@ -83,7 +84,7 @@ const FestivalDetailContainer = (): JSX.Element => {
         </PlayerModal>
       )}
       {loading && <Loader />}
-      {error && <p style={{ textAlign: 'center' }}>Error!!!</p>}
+      {error && <ErrorMessage />}
       {data && (
         <DetailPresenter>
           <PosterSection>

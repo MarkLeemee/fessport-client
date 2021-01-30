@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
-import styled from 'styled-components';
 import Loader from '../pages/Loader';
+import ErrorMessage from '../pages/ErrorMessage';
+import styled from 'styled-components';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../modules';
@@ -117,7 +118,7 @@ const FestivalListContainer = (): JSX.Element => {
     <>
       <BackgorundImage />
       {loading && <Loader />}
-      {error && <p style={{ textAlign: 'center' }}>Error!!!</p>}
+      {error && <ErrorMessage />}
       <ListPresenter>
         <FestivalCategory>
           <FestivalCategoryHead> Festival List </FestivalCategoryHead>
@@ -217,6 +218,10 @@ const FestivalCategory = styled.div`
   flex-direction: column;
   width: 30%;
   background-color: rgba(0, 0, 0, 0.5);
+
+  @media only screen and (max-width: 960px) {
+    display: none;
+  }
 `;
 
 const FestivalCategoryHead = styled.div`
@@ -259,6 +264,11 @@ const ContentsSection = styled.div`
   justify-content: center;
   width: 70%;
   margin-left: 5%;
+
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+    margin: 0%;
+  }
 `;
 
 const CategorySection = styled.div`
@@ -325,6 +335,8 @@ const MoreButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  align-self: center;
+  justify-self: center;
   width: 100%;
   height: 50px;
   margin-top: 30px;

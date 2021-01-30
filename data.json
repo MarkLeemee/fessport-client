@@ -656,7 +656,7 @@
       "y": 170,
       "x": 1110,
       "flagImage": "https://flagcdn.com/kr.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -685,7 +685,7 @@
       "y": 170,
       "x": 1160,
       "flagImage": "https://flagcdn.com/jp.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -714,7 +714,7 @@
       "y": 260,
       "x": 1100,
       "flagImage": "https://flagcdn.com/ph.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -743,7 +743,7 @@
       "y": 260,
       "x": 1000,
       "flagImage": "https://flagcdn.com/th.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -772,7 +772,7 @@
       "y": 250,
       "x": 1080,
       "flagImage": "https://flagcdn.com/sg.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -801,7 +801,7 @@
       "y": 210,
       "x": 1080,
       "flagImage": "https://flagcdn.com/tw.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -830,7 +830,7 @@
       "y": 280,
       "x": 1030,
       "flagImage": "https://flagcdn.com/vn.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -859,7 +859,7 @@
       "y": 230,
       "x": 905,
       "flagImage": "https://flagcdn.com/in.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -888,7 +888,7 @@
       "y": 190,
       "x": 780,
       "flagImage": "https://flagcdn.com/ae.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -917,7 +917,7 @@
       "y": 180,
       "x": 1030,
       "flagImage": "https://flagcdn.com/cn.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -946,7 +946,7 @@
       "y": 230,
       "x": 1050,
       "flagImage": "https://flagcdn.com/hk.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -975,7 +975,7 @@
       "y": 120,
       "x": 580,
       "flagImage": "https://flagcdn.com/be.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1004,7 +1004,7 @@
       "y": 130,
       "x": 560,
       "flagImage": "https://flagcdn.com/fr.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1033,7 +1033,7 @@
       "y": 120,
       "x": 600,
       "flagImage": "https://flagcdn.com/de.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1062,7 +1062,7 @@
       "y": 90,
       "x": 530,
       "flagImage": "https://flagcdn.com/ie.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1091,7 +1091,7 @@
       "y": 160,
       "x": 610,
       "flagImage": "https://flagcdn.com/it.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1120,7 +1120,7 @@
       "y": 120,
       "x": 580,
       "flagImage": "https://flagcdn.com/nl.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1149,7 +1149,7 @@
       "y": 160,
       "x": 560,
       "flagImage": "https://flagcdn.com/es.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1178,7 +1178,7 @@
       "y": 100,
       "x": 550,
       "flagImage": "https://flagcdn.com/gb.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1207,7 +1207,7 @@
       "y": 160,
       "x": 660,
       "flagImage": "https://flagcdn.com/hr.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1236,7 +1236,7 @@
       "y": 130,
       "x": 630,
       "flagImage": "https://flagcdn.com/cz.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1265,7 +1265,7 @@
       "y": 170,
       "x": 650,
       "flagImage": "https://flagcdn.com/gr.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1294,7 +1294,7 @@
       "y": 430,
       "x": 680,
       "flagImage": "https://flagcdn.com/za.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1323,7 +1323,7 @@
       "y": 210,
       "x": 700,
       "flagImage": "https://flagcdn.com/eg.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1352,7 +1352,7 @@
       "y": 420,
       "x": 1130,
       "flagImage": "https://flagcdn.com/au.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1381,7 +1381,7 @@
       "y": 320,
       "x": 1030,
       "flagImage": "https://flagcdn.com/id.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1410,7 +1410,7 @@
       "y": 430,
       "x": 1215,
       "flagImage": "https://flagcdn.com/nz.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1439,7 +1439,7 @@
       "y": 430,
       "x": 330,
       "flagImage": "https://flagcdn.com/ar.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1468,7 +1468,7 @@
       "y": 370,
       "x": 370,
       "flagImage": "https://flagcdn.com/br.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1497,7 +1497,7 @@
       "y": 440,
       "x": 260,
       "flagImage": "https://flagcdn.com/cl.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1526,7 +1526,7 @@
       "y": 280,
       "x": 300,
       "flagImage": "https://flagcdn.com/co.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1555,7 +1555,7 @@
       "y": 360,
       "x": 240,
       "flagImage": "https://flagcdn.com/pe.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1584,7 +1584,7 @@
       "y": 110,
       "x": 160,
       "flagImage": "https://flagcdn.com/ca.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1613,7 +1613,7 @@
       "y": 220,
       "x": 240,
       "flagImage": "https://flagcdn.com/cu.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1642,7 +1642,7 @@
       "y": 240,
       "x": 130,
       "flagImage": "https://flagcdn.com/mx.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
@@ -1671,7 +1671,7 @@
       "y": 170,
       "x": 130,
       "flagImage": "https://flagcdn.com/us.svg",
-      "festival": [
+      "festivals": [
         {
           "_id": 1,
           "name": "umf",
