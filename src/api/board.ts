@@ -6,7 +6,7 @@ export async function getBoardData(
   boardId: string,
 ): Promise<BoardDataRes[] | void> {
   const response = await axios.get<BoardDataRes[]>(
-    `https://fessport-server.com/board/list?boardCategoryId=${boardId}`,
+    `/board/list?boardCategoryId=${boardId}`,
     {
       withCredentials: true,
     },
@@ -54,7 +54,7 @@ export async function postBoardData(
   param: BoardRequest,
 ): Promise<Imessage | void> {
   const response = await axios.post<Imessage>(
-    'https://fessport-server.com/board/create',
+    '/board/create',
     param.postBoardData,
     {
       withCredentials: true,
@@ -88,7 +88,7 @@ export async function deleteBoardData(
   param: BoardDelete,
 ): Promise<Imessage | void> {
   const response = await axios.post<Imessage>(
-    'https://fessport-server.com/board/delete',
+    '/board/delete',
     param.postBoardData,
     {
       withCredentials: true,
