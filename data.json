@@ -1740,51 +1740,7 @@
       }
     ],
     "wishArtist": [
-      {
-        "_id": "6009a3aa55efce83112ccf7b",
-        "name": "박효신",
-        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
-      },
-      {
-        "_id": "6009a3aa55efce83112ccf7b",
-        "name": "박효신",
-        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
-      },
-      {
-        "_id": "6009a3aa55efce83112ccf7b",
-        "name": "박효신",
-        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
-      },
-      {
-        "_id": "6009a3aa55efce83112ccf7b",
-        "name": "박효신",
-        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
-      },
-      {
-        "_id": "6009a3aa55efce83112ccf7b",
-        "name": "박효신",
-        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
-      },
-      {
-        "_id": "6009a3aa55efce83112ccf7b",
-        "name": "박효신",
-        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
-      },
-      {
-        "_id": "6009a3aa55efce83112ccf7b",
-        "name": "박효신",
-        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
-      },
-      {
-        "_id": "6009a3aa55efce83112ccf7b",
-        "name": "박효신",
-        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
-      },
-      {
-        "_id": "6009a3aa55efce83112ccf7b",
-        "name": "박효신",
-        "image": "https://pbs.twimg.com/media/D_cH6FFUYAMxas_.jpg"
-      }
+     
     ]
   },
   "visit": {},

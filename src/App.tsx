@@ -16,7 +16,7 @@ const App = (): JSX.Element => {
       <Switch>
         <Route path="/" component={HomePage} exact={true} />
         <Route path="/festival/list" component={FestivalListPage} />
-        <Route path="/festival/detail/:id" component={FestivalDetailPage} />
+        <Route path="/festival/detail/:_id" component={FestivalDetailPage} />
         <Route path="/artist/list" component={ArtistListPage} />
         <Route path="/artist/detail/:_id" component={ArtistDetailPage} />
         <Route path="/fessport" component={FessportPage} />

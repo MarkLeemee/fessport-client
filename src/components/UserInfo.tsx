@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../modules';
 import { postImageAsync } from '../modules/image';
 import { patchUserInfoAsync } from '../modules/userInfo';
+import ModalMessage from '../components/ModalMessage';
 interface IProps {
   email: string | null;
   nickName: string | null;
@@ -25,6 +26,8 @@ const UserInfo = ({
   image,
   handleScrollDown,
 }: IProps): JSX.Element => {
+  const [isMessage, setIsMessage] = useState(false);
+  const [message, setMessage] = useState('');
   const [editUserInfo, setEditUserInfo] = useState<IEditUserInfo>({
     image: image,
     nickName: nickName,
@@ -41,7 +44,8 @@ const UserInfo = ({
 
   useEffect(() => {
     if (imageError) {
-      console.log('Image 업로드 실패');
+      setMessage('이미지 업로드 실패');
+      setIsMessage(true);
     } else if (imageData) {
       setEditUserInfo((state) => ({
         ...state,
@@ -78,7 +82,8 @@ const UserInfo = ({
   const handleEditUserInfo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (editUserInfo.newPassword !== editUserInfo.newPasswordCheck) {
-      console.log('비밀번호가 일치하지 않습니다.');
+      setMessage('비밀번호가 일치하지 않습니다.');
+      setIsMessage(true);
     } else {
       const editedUserInfo = {
         nickName: editUserInfo.nickName,
@@ -95,95 +100,100 @@ const UserInfo = ({
   };
 
   return (
-    <UserInfoPresenter onSubmit={handleEditUserInfo}>
-      <TitleBox>
-        <TitleText> FESSPORT (Profile) </TitleText>
-      </TitleBox>
-      <ContentsBox>
-        <ImageBox>
-          <UserImage
-            src={
-              editUserInfo.image
-                ? editUserInfo.image
-                : '/images/default_profile.png'
-            }
-          />
-          <ImageUpload
-            ref={fileRef}
-            type={'file'}
-            accept="image/*"
-            onChange={handleSelectedImage}
-          />
-          <ImageUploadButton onClick={handleImageUpload}>
-            Edit Image
-          </ImageUploadButton>
-        </ImageBox>
-        <InfoBox>
-          <TypeBox>
-            <TextBox>
-              <SubText>종류/Type</SubText>
-              <MainText>PM</MainText>
-            </TextBox>
-            <TextBox>
-              <SubText>국가코드/Country code</SubText>
-              <MainText>KOR</MainText>
-            </TextBox>
-            <TextBox>
-              <SubText>회원번호/Fessport No.</SubText>
-              <MainText>M123A4567</MainText>
-            </TextBox>
-          </TypeBox>
-          <SubText>닉네임/Nickname</SubText>
-          <InputText
-            type={'text'}
-            name={'nickName'}
-            value={editUserInfo.nickName ? editUserInfo.nickName : ''}
-            onChange={handleInputValue}
-          ></InputText>
-          <SubText>이메일/E-mail</SubText>
-          <MainText>{email}</MainText>
-          <TypeBox>
-            <TextBox>
-              <SubText>국적/Nationality</SubText>
-              <MainText>REPUBLIC OF KOREA</MainText>
-            </TextBox>
-            <TextBox>
-              <SubText>발행관청/Authority</SubText>
-              <MainText>TEAM FESSPORT a.k.a. COSTIVAL</MainText>
-            </TextBox>
-          </TypeBox>
-          <SubText>새로운 비밀번호/New password</SubText>
-          <InputText
-            type={'password'}
-            name={'newPassword'}
-            value={editUserInfo.newPassword ? editUserInfo.newPassword : ''}
-            placeholder={'변경할 비밀번호를 입력하세요'}
-            onChange={handleInputValue}
-          ></InputText>
-          <ButtonBox>
-            <div>
-              <SubText>새로운 비밀번호 확인/New password check</SubText>
-              <InputText
-                type={'password'}
-                name={'newPasswordCheck'}
-                value={
-                  editUserInfo.newPasswordCheck
-                    ? editUserInfo.newPasswordCheck
-                    : ''
-                }
-                placeholder={'변경할 비밀번호를 한번 더 입력하세요'}
-                onChange={handleInputValue}
-              ></InputText>
-            </div>
-            <EditButton type="submit"> Edit Profile </EditButton>
-          </ButtonBox>
-        </InfoBox>
-      </ContentsBox>
-      <DownButton
-        src="/images/arrow.png"
-        onClick={handleScrollDown('collectorRef')}
-      />
-    </UserInfoPresenter>
+    <>
+      {isMessage && (
+        <ModalMessage message={message} setIsMessage={setIsMessage} />
+      )}
+      <UserInfoPresenter onSubmit={handleEditUserInfo}>
+        <TitleBox>
+          <TitleText> FESSPORT (Profile) </TitleText>
+        </TitleBox>
+        <ContentsBox>
+          <ImageBox>
+            <UserImage
+              src={
+                editUserInfo.image
+                  ? editUserInfo.image
+                  : '/images/default_profile.png'
+              }
+            />
+            <ImageUpload
+              ref={fileRef}
+              type={'file'}
+              accept="image/*"
+              onChange={handleSelectedImage}
+            />
+            <ImageUploadButton onClick={handleImageUpload}>
+              Edit Image
+            </ImageUploadButton>
+          </ImageBox>
+          <InfoBox>
+            <TypeBox>
+              <TextBox>
+                <SubText>종류/Type</SubText>
+                <MainText>PM</MainText>
+              </TextBox>
+              <TextBox>
+                <SubText>국가코드/Country code</SubText>
+                <MainText>KOR</MainText>
+              </TextBox>
+              <TextBox>
+                <SubText>회원번호/Fessport No.</SubText>
+                <MainText>M123A4567</MainText>
+              </TextBox>
+            </TypeBox>
+            <SubText>닉네임/Nickname</SubText>
+            <InputText
+              type={'text'}
+              name={'nickName'}
+              value={editUserInfo.nickName ? editUserInfo.nickName : ''}
+              onChange={handleInputValue}
+            ></InputText>
+            <SubText>이메일/E-mail</SubText>
+            <MainText>{email}</MainText>
+            <TypeBox>
+              <TextBox>
+                <SubText>국적/Nationality</SubText>
+                <MainText>REPUBLIC OF KOREA</MainText>
+              </TextBox>
+              <TextBox>
+                <SubText>발행관청/Authority</SubText>
+                <MainText>TEAM FESSPORT a.k.a. COSTIVAL</MainText>
+              </TextBox>
+            </TypeBox>
+            <SubText>새로운 비밀번호/New password</SubText>
+            <InputText
+              type={'password'}
+              name={'newPassword'}
+              value={editUserInfo.newPassword ? editUserInfo.newPassword : ''}
+              placeholder={'변경할 비밀번호를 입력하세요'}
+              onChange={handleInputValue}
+            ></InputText>
+            <ButtonBox>
+              <div>
+                <SubText>새로운 비밀번호 확인/New password check</SubText>
+                <InputText
+                  type={'password'}
+                  name={'newPasswordCheck'}
+                  value={
+                    editUserInfo.newPasswordCheck
+                      ? editUserInfo.newPasswordCheck
+                      : ''
+                  }
+                  placeholder={'변경할 비밀번호를 한번 더 입력하세요'}
+                  onChange={handleInputValue}
+                ></InputText>
+              </div>
+              <EditButton type="submit"> Edit Profile </EditButton>
+            </ButtonBox>
+          </InfoBox>
+        </ContentsBox>
+        <DownButton
+          src="/images/arrow.png"
+          onClick={handleScrollDown('collectorRef')}
+        />
+      </UserInfoPresenter>
+    </>
   );
 };
 

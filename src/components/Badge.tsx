@@ -118,7 +118,7 @@ const BadgeImage = styled.img<{ get: boolean }>`
   height: 80px;
   border-radius: 50%;
   object-fit: contain;
-  opacity: ${(props) => (props.get ? 1 : 0.8)};
+  opacity: ${(props) => (props.get ? 1 : 0.3)};
   mix-blend-mode: ${(props) => (props.get ? 'normal' : 'luminosity')};
 `;
 

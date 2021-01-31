@@ -10,7 +10,7 @@ import {
 } from './actions';
 
 const initialState: SignState = {
-  isLogin: false,
+  isLogin: true,
   loading: false,
   error: null,
   data: null,

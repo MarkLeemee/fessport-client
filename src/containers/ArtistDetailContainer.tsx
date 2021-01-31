@@ -3,6 +3,7 @@ import { Link, useParams, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import ReactPlayer from 'react-player';
 import Slider from 'react-slick';
+import ModalMessage from '../components/ModalMessage';
 import Loader from '../pages/Loader';
 import ErrorMessage from '../pages/ErrorMessage';
 
@@ -27,10 +28,14 @@ const ArtistDetailContainer = (): JSX.Element => {
 
   const [isModal, setIsModal] = useState(false);
   const [nowVideo, setNowVideo] = useState('');
+  const [isMessage, setIsMessage] = useState(false);
 
-  const { data, loading, error } = useSelector(
-    (state: RootState) => state.artist.artistDetail,
-  );
+  const { data, loading, error, isLogin } = useSelector((state: RootState) => ({
+    data: state.artist.artistDetail.data,
+    loading: state.artist.artistDetail.loading,
+    error: state.artist.artistDetail.error,
+    isLogin: state.sign.isLogin,
+  }));
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,9 +51,11 @@ const ArtistDetailContainer = (): JSX.Element => {
   };
 
   const handleLikeButton = () => {
-    if (data && data.isLiked) {
+    if (!isLogin) {
+      setIsMessage(true);
+    } else if (data && data.isLiked) {
       dispatch(postDislikeArtistAsync.request(params._id));
-    } else if (data && !data.isLiked) {
+    } else {
       dispatch(postLikeArtistAsync.request(params._id));
     }
   };
@@ -72,6 +79,12 @@ const ArtistDetailContainer = (): JSX.Element => {
             url={`https://youtu.be/${nowVideo}`}
           />
         </PlayerModal>
+      )}
+      {isMessage && (
+        <ModalMessage
+          message="로그인이 필요한 기능입니다."
+          setIsMessage={setIsMessage}
+        />
       )}
       {loading && <Loader />}
       {error && <ErrorMessage />}
