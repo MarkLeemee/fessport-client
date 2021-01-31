@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
 import CountrySection from '../components/CountrySection';
 import Loader from '../pages/Loader';
+import ErrorMessage from '../pages/ErrorMessage';
+import ResizeMessage from '../pages/ResizeMessage';
 import styled from 'styled-components';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,39 +23,44 @@ const HomeContainer = (): JSX.Element => {
   return (
     <>
       {loading && <Loader />}
-      {error && <p style={{ textAlign: 'center' }}>Error!!!</p>}
+      {error && <ErrorMessage />}
       {data && (
-        <HomePresenter>
-          <SubMapImage src={'/images/dots.png'} />
-          <MapPresenter>
-            <MapImage src={'/images/themapp.jpg'} />
-            {/* <GridImage src={'/images/gridd.png'} /> */}
-            {data.map((country) => (
-              <CountrySection
-                key={country._id}
-                _id={country._id}
-                name={country.name}
-                y={country.y}
-                x={country.x}
-                flagImage={country.flagImage}
-                festival={country.festival}
-              />
-            ))}
-          </MapPresenter>
-        </HomePresenter>
+        <>
+          <HomePresenter>
+            <SubMapImage src={'/images/dots.png'} />
+            <MapPresenter>
+              <MapImage src={'/images/themapp.jpg'} />
+              {data.map((country) => (
+                <CountrySection
+                  key={country._id}
+                  _id={country._id}
+                  name={country.name}
+                  y={country.y}
+                  x={country.x}
+                  flagImage={country.flagImage}
+                  festivals={country.festivals}
+                />
+              ))}
+            </MapPresenter>
+          </HomePresenter>
+          <ResizeMessage />
+        </>
       )}
     </>
   );
 };
 
 const HomePresenter = styled.div`
-  width: 100vw;
-  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
+  height: 80vh;
   overflow: hidden;
-  /* margin-top: 50px; */
+
+  @media only screen and (max-width: 960px) {
+    display: none;
+  }
 `;
 
 const SubMapImage = styled.img`
@@ -71,16 +77,10 @@ const MapPresenter = styled.div`
 `;
 
 const MapImage = styled.img`
-  object-fit: fill;
   position: absolute;
   width: 1250px;
   height: 600px;
+  object-fit: fill;
 `;
 
-const GridImage = styled.img`
-  position: absolute;
-  width: 1250px;
-  height: 100vh;
-`;
-
-export default withRouter(HomeContainer);
+export default HomeContainer;

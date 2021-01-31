@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { RootState } from '../modules';
-import { loginAsync, signupAsync } from '../modules/sign';
+import { postSigninAsync, postSignupAsync } from '../modules/sign';
 
 interface ModalProps {
   title: string;
@@ -30,7 +29,7 @@ export const SignModal = ({ title, isOpen, onClose }: ModalProps) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const isLogin = useSelector((state: RootState) => state.login);
+  const { isLogin } = useSelector((state: RootState) => state.sign);
 
   const onSubmitHandler = (e: any): void => {
     const userInfo = {
@@ -40,7 +39,7 @@ export const SignModal = ({ title, isOpen, onClose }: ModalProps) => {
     if (!email || !password) {
     } else {
       e.preventDefault();
-      dispatch(loginAsync.request({ userInfo: userInfo }));
+      dispatch(postSigninAsync.request(userInfo));
       onClose();
     }
   };
@@ -61,7 +60,7 @@ export const SignModal = ({ title, isOpen, onClose }: ModalProps) => {
       nickname: signUpNick,
       password: signUpPassword,
     };
-    dispatch(signupAsync.request({ userInfo: userInfo }));
+    dispatch(postSignupAsync.request(userInfo));
     handleSignup();
   };
 

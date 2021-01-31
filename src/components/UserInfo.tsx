@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../modules';
 import { postImageAsync } from '../modules/image';
 import { patchUserInfoAsync } from '../modules/userInfo';
-
 interface IProps {
   email: string | null;
   nickName: string | null;
@@ -13,7 +12,6 @@ interface IProps {
     target: string,
   ) => (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
-
 interface IEditUserInfo {
   nickName: string | null;
   image: string | null;
@@ -37,10 +35,20 @@ const UserInfo = ({
   const { imageData, imageError } = useSelector(
     (state: RootState) => state.image,
   );
-
   const dispatch = useDispatch();
 
   const fileRef: React.RefObject<HTMLInputElement> = React.createRef();
+
+  useEffect(() => {
+    if (imageError) {
+      console.log('Image 업로드 실패');
+    } else if (imageData) {
+      setEditUserInfo((state) => ({
+        ...state,
+        image: imageData,
+      }));
+    }
+  }, [imageData, imageError]);
 
   const handleImageUpload = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -86,20 +94,8 @@ const UserInfo = ({
     }
   };
 
-  useEffect(() => {
-    if (imageError) {
-      console.log('Image 업로드 실패');
-    } else if (imageData) {
-      setEditUserInfo((state) => ({
-        ...state,
-        image: imageData,
-      }));
-    }
-  }, [imageData, imageError]);
-
   return (
     <UserInfoPresenter onSubmit={handleEditUserInfo}>
-      {/* <BackgroundImage src={'/images/passport.jpg'} /> */}
       <TitleBox>
         <TitleText> FESSPORT (Profile) </TitleText>
       </TitleBox>
@@ -187,12 +183,6 @@ const UserInfo = ({
         src="/images/arrow.png"
         onClick={handleScrollDown('collectorRef')}
       />
-      {/* <TextUnder>
-        {'PMKORTEAMCOSTIVAL<<<<<<<<<FESSPORT>>>>>>>>>>>>>>>>>>>>>>>>'}
-      </TextUnder>
-      <TextUnder>
-        {'M123A4567KOR87025010F3004348515034V204111000000000000000000'}
-      </TextUnder> */}
     </UserInfoPresenter>
   );
 };
@@ -206,15 +196,6 @@ const UserInfoPresenter = styled.form`
   background: rgba(0, 0, 0);
   border-radius: 30px;
   z-index: 2;
-`;
-
-const BackgroundImage = styled.img`
-  position: absolute;
-  width: 1100px;
-  height: 550px;
-  border-radius: 30px;
-  opacity: 0.2;
-  z-index: 1;
 `;
 
 const TitleBox = styled.div`
@@ -256,18 +237,17 @@ const ImageUploadButton = styled.button`
   align-self: center;
   margin-top: 20px;
   width: 250px;
-  height: 45px;
-  background: rgba(170, 170, 170, 0.1);
+  height: 50px;
+  color: rgb(200, 200, 200);
   font-size: 1rem;
   font-weight: 500;
   border: 0;
   outline: 0;
-  height: 50px;
-  color: rgb(200, 200, 200);
+  background: rgba(170, 170, 170, 0.1);
   cursor: pointer;
   &:hover {
-    background: rgb(170, 170, 170, 0.8);
     color: rgb(36, 36, 36);
+    background: rgb(170, 170, 170, 0.8);
   }
   transition: background 0.5s ease-in-out;
 `;
@@ -297,26 +277,26 @@ const SubText = styled.span`
 
 const MainText = styled.span`
   display: flex;
-  margin-left: 50px;
   margin-top: 5px;
+  margin-left: 50px;
   margin-bottom: 20px;
   padding-bottom: 5px;
+  color: rgb(200, 200, 200);
   font-size: 1.2em;
   font-weight: 600;
-  color: rgb(200, 200, 200);
 `;
 
 const InputText = styled.input`
+  width: 300px;
   margin-left: 50px;
   margin-top: 5px;
   margin-bottom: 20px;
   padding: 5px;
-  width: 300px;
+  color: rgb(200, 200, 200);
   font-size: 1.2em;
   font-weight: 600;
   border-radius: 5px;
   background: transparent;
-  color: rgb(200, 200, 200);
   border-bottom: 1px solid rgba(170, 170, 170, 0.5);
   &:focus {
     background: rgba(170, 170, 170, 0.1);
@@ -330,38 +310,32 @@ const ButtonBox = styled.div`
 `;
 
 const EditButton = styled.button`
-  background: rgba(170, 170, 170, 0.1);
+  width: 100px;
+  height: 50px;
+  color: rgb(200, 200, 200);
   font-size: 1rem;
   font-weight: 500;
-  width: 100px;
   border: 0;
   border-radius: 10px;
   outline: 0;
-  height: 50px;
-  color: rgb(200, 200, 200);
+  background: rgba(170, 170, 170, 0.1);
   cursor: pointer;
   &:hover {
-    background: rgb(170, 170, 170, 0.8);
     color: rgb(36, 36, 36);
+    background: rgb(170, 170, 170, 0.8);
   }
   transition: background 0.5s ease-in-out;
 `;
 
 const DownButton = styled.img`
-  object-fit: cover;
   position: absolute;
   top: 90%;
   left: 45%;
   width: 100px;
   height: 100px;
   opacity: 0.8;
+  object-fit: cover;
   z-index: 99;
-`;
-
-const TextUnder = styled.span`
-  margin-left: 100px;
-  font-size: 1.5em;
-  color: rgb(200, 200, 200);
 `;
 
 export default UserInfo;

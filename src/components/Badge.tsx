@@ -11,12 +11,10 @@ const Badge = ({
 }): JSX.Element => {
   return (
     <BadgePresenter>
-      {/* <BackgroundImage src={'/images/visa.jpg'} /> */}
       <TitleText> Festival Challenge (badge) </TitleText>
       <Temp>
         <TitleName>
-          {' '}
-          페스티벌 정복 (총 1 / 3 / 6 / 9 / 12개 페스티벌 방문){' '}
+          페스티벌 정복 (총 3 / 6 / 9 / 12 / 15개 페스티벌 방문)
         </TitleName>
         <TitleBox ref={badgeRef}>
           {badge &&
@@ -31,7 +29,7 @@ const Badge = ({
         </TitleBox>
       </Temp>
       <Temp>
-        <TitleName> 세계 정복 (총 1 / 3 / 6 / 9 / 12개국 방문) </TitleName>
+        <TitleName> 세계 정복 (총 3 / 6 / 9 / 12 / 15개국 방문) </TitleName>
         <TitleBox>
           {badge &&
             badge
@@ -64,33 +62,22 @@ const Badge = ({
 
 const BadgePresenter = styled.div`
   position: relative;
+  width: 1100px;
+  height: 800px;
   margin-top: 50px;
   margin-bottom: 50px;
   padding-left: 50px;
-  width: 1100px;
-  height: 800px;
+  border-radius: 30px;
   background-color: rgba(0, 0, 0);
-  border-radius: 30px;
-`;
-
-const BackgroundImage = styled.img`
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 1100px;
-  height: 800px;
-  border-radius: 30px;
-  /* opacity: 0.8; */
-  z-index: -1;
 `;
 
 const TitleText = styled.div`
   margin-top: 20px;
   width: 300px;
+  padding: 10px;
   color: white;
   font-size: 1.5em;
   font-weight: 600;
-  padding: 10px;
   border-radius: 5px;
   z-index: 99;
 `;
@@ -98,18 +85,18 @@ const TitleText = styled.div`
 const TitleName = styled.div`
   margin-left: 30px;
   margin-bottom: 10px;
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: white;
   padding-left: 10px;
   padding-bottom: 5px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
   border-bottom: 1px solid rgba(255, 255, 255, 0.6);
 `;
 
 const Temp = styled.div`
   width: 750px;
-  padding: 20px;
   margin-top: 30px;
+  padding: 20px;
   border-radius: 50px;
   background-color: rgba(170, 170, 170, 0.15);
 `;
@@ -126,21 +113,21 @@ const BadgeBox = styled.div`
 `;
 
 const BadgeImage = styled.img<{ get: boolean }>`
-  object-fit: contain;
+  align-self: center;
   width: 80px;
   height: 80px;
   border-radius: 50%;
+  object-fit: contain;
   opacity: ${(props) => (props.get ? 1 : 0.8)};
   mix-blend-mode: ${(props) => (props.get ? 'normal' : 'luminosity')};
-  align-self: center;
 `;
 
 const BadegName = styled.div`
-  color: white;
+  align-self: center;
   margin-top: 15px;
+  color: white;
   font-size: 1rem;
   font-weight: 500;
-  align-self: center;
 `;
 
 export default Badge;

@@ -10,18 +10,14 @@ const CountrySection = ({
   y,
   x,
   flagImage,
-  festival,
+  festivals,
 }: IMap): JSX.Element => {
-  const history = useHistory();
   const [isHover, setIsHover] = useState<boolean>(false);
   const [dy, setDy] = useState<number>(300);
   const [dx, setDx] = useState<number>(150);
   const [my, setMy] = useState<number>(-10);
   const [mx, setMx] = useState<number>(20);
-
-  const handleCountryLink = () => {
-    history.push(`/festival/list?countryId=${_id}`);
-  };
+  const history = useHistory();
 
   useEffect(() => {
     console.log('🏁🏁🏁🏁 CountrySection(x, y setting) useEffect 🏁🏁🏁🏁');
@@ -39,14 +35,18 @@ const CountrySection = ({
     }
   }, [y, x]);
 
+  const handleCountryLink = () => {
+    history.push(`/festival/list?countryId=${_id}`);
+  };
+
   return (
     <CountryPresenter y={dy} x={dx}>
-      <Circle1 hover={isHover} />
-      <Circle2 hover={isHover} />
-      <Circle3 hover={isHover} />
-      <CircleImage src={'/images/ultra.png'} hover={isHover} />
-      <Pin1 src={'/images/ultra-pin.png'} hover={isHover} />
-      <Pin2 hover={isHover} />
+      <Circle1 ishover={isHover} />
+      <Circle2 ishover={isHover} />
+      <Circle3 ishover={isHover} />
+      <CircleImage src={'/images/ultra.png'} ishover={isHover} />
+      <Pin1 src={'/images/ultra-pin.png'} ishover={isHover} />
+      <Pin2 ishover={isHover} />
       <div
         onMouseEnter={() => {
           setIsHover(!isHover);
@@ -61,7 +61,7 @@ const CountrySection = ({
             {name}
           </CountryLink>
           <PosterPresenter>
-            {festival.map((item) => (
+            {festivals.map((item) => (
               <MapModalPoster
                 key={item._id}
                 _id={item._id}
@@ -75,7 +75,7 @@ const CountrySection = ({
           key={_id}
           src={flagImage}
           alt={name}
-          hover={isHover}
+          ishover={isHover}
           onClick={handleCountryLink}
         />
       </div>
@@ -84,78 +84,82 @@ const CountrySection = ({
 };
 
 const CountryPresenter = styled.div<{ y: number; x: number }>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: absolute;
   top: ${(props) => props.y}px;
   left: ${(props) => props.x}px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: all 1.5s ease-in-out;
 `;
 
-const Circle1 = styled.div<{ hover: boolean }>`
+const Circle1 = styled.div<{ ishover: boolean }>`
   position: absolute;
-  width: ${(props) => (props.hover ? 100 : 44)}px;
-  height: ${(props) => (props.hover ? 100 : 44)}px;
-  border: 1px solid rgba(120, 192, 204, ${(props) => (props.hover ? 0.6 : 0.4)});
+  width: ${(props) => (props.ishover ? 100 : 44)}px;
+  height: ${(props) => (props.ishover ? 100 : 44)}px;
+  border: 1px solid
+    rgba(120, 192, 204, ${(props) => (props.ishover ? 0.6 : 0.4)});
   border-radius: 50px;
   transition: all 0.5s ease-in-out;
   animation: changeColor 1s linear infinite;
   @keyframes changeColor {
     0% {
       border: 1px solid
-        rgba(120, 192, 204, ${(props) => (props.hover ? 0.6 : 0.4)});
+        rgba(120, 192, 204, ${(props) => (props.ishover ? 0.6 : 0.4)});
     }
     50% {
       border: 1px solid
-        rgba(120, 192, 204, ${(props) => (props.hover ? 0.6 : 0)});
+        rgba(120, 192, 204, ${(props) => (props.ishover ? 0.6 : 0)});
     }
     100% {
       border: 1px solid
-        rgba(120, 192, 204, ${(props) => (props.hover ? 0.6 : 0.4)});
+        rgba(120, 192, 204, ${(props) => (props.ishover ? 0.6 : 0.4)});
     }
   }
 `;
 
-const Circle2 = styled.div<{ hover: boolean }>`
+const Circle2 = styled.div<{ ishover: boolean }>`
   position: absolute;
-  width: ${(props) => (props.hover ? 90 : 40)}px;
-  height: ${(props) => (props.hover ? 90 : 40)}px;
-  border: 1px solid rgba(120, 192, 204, ${(props) => (props.hover ? 0.6 : 0.4)});
+  width: ${(props) => (props.ishover ? 90 : 40)}px;
+  height: ${(props) => (props.ishover ? 90 : 40)}px;
+  border: 1px solid
+    rgba(120, 192, 204, ${(props) => (props.ishover ? 0.6 : 0.4)});
   border-radius: 50px;
   transition: all 0.5s ease-in-out;
 `;
 
-const Circle3 = styled.div<{ hover: boolean }>`
+const Circle3 = styled.div<{ ishover: boolean }>`
   position: absolute;
-  width: ${(props) => (props.hover ? 55 : 24)}px;
-  height: ${(props) => (props.hover ? 55 : 24)}px;
-  border: 2px solid rgba(120, 192, 204, ${(props) => (props.hover ? 0.6 : 0.4)});
+  width: ${(props) => (props.ishover ? 55 : 24)}px;
+  height: ${(props) => (props.ishover ? 55 : 24)}px;
+  border: 2px solid
+    rgba(120, 192, 204, ${(props) => (props.ishover ? 0.6 : 0.4)});
   border-radius: 50px;
   transition: all 0.5s ease-in-out;
 `;
 
-const CircleImage = styled.img<{ hover: boolean }>`
+const CircleImage = styled.img<{ ishover: boolean }>`
   position: absolute;
   width: 150px;
   height: 150px;
-  opacity: ${(props) => (props.hover ? 0.8 : 0)};
+  opacity: ${(props) => (props.ishover ? 0.8 : 0)};
   transition: all 0.5s ease-in-out;
 `;
 
-const Pin1 = styled.img<{ hover: boolean }>`
+const Pin1 = styled.img<{ ishover: boolean }>`
   position: absolute;
-  top: ${(props) => (props.hover ? -50 : 0)}px;
+  top: ${(props) => (props.ishover ? -50 : 0)}px;
   width: 20px;
   height: 20px;
-  opacity: ${(props) => (props.hover ? 1 : 0)};
+  opacity: ${(props) => (props.ishover ? 1 : 0)};
   transition: all 0.5s ease-in-out;
 `;
 
-const Pin2 = styled.div<{ hover: boolean }>`
+const Pin2 = styled.div<{ ishover: boolean }>`
   position: absolute;
   width: 45px;
   height: 45px;
+  animation: rotateClockwise 1.5s linear infinite;
   &:before {
     content: '';
     display: block;
@@ -163,26 +167,25 @@ const Pin2 = styled.div<{ hover: boolean }>`
     height: 5px;
     border-radius: 50%;
   }
-  animation: rotateClockwise 1.5s linear infinite;
+  &:before {
+    opacity: ${(props) => (props.ishover ? 0.8 : 0)};
+    background: white;
+    transition: all 0.5s ease-in-out;
+  }
   @keyframes rotateClockwise {
     100% {
       transform: rotate(360deg);
     }
   }
-  &:before {
-    background: white;
-    opacity: ${(props) => (props.hover ? 0.8 : 0)};
-    transition: all 0.5s ease-in-out;
-  }
 `;
 
 const ModalFrame = styled.div<{ isHover: boolean; my: number; mx: number }>`
   visibility: ${(props) => (props.isHover ? 'visible' : 'hidden')};
-  display: flex;
-  flex-direction: column;
   position: absolute;
   top: ${(props) => props.my}px;
   left: ${(props) => props.mx}px;
+  display: flex;
+  flex-direction: column;
   width: 600px;
   height: 300px;
   border: 20px solid transparent;
@@ -203,10 +206,10 @@ const CountryLink = styled(Link)`
 `;
 
 const FlagImage = styled.img`
-  object-fit: contain;
   margin-right: 10px;
   width: 25px;
   height: 25px;
+  object-fit: contain;
 `;
 
 const PosterPresenter = styled.div`
@@ -217,13 +220,14 @@ const PosterPresenter = styled.div`
   margin-right: 30px;
 `;
 
-const CountryImage = styled.img<{ hover: boolean }>`
-  object-fit: contain;
+const CountryImage = styled.img<{ ishover: boolean }>`
   position: relative;
   width: 30px;
   height: 30px;
-  border: 2px solid rgba(148, 242, 255, ${(props) => (props.hover ? 0.8 : 0.4)});
+  border: 2px solid
+    rgba(148, 242, 255, ${(props) => (props.ishover ? 0.8 : 0.4)});
   border-radius: 50px;
+  object-fit: contain;
   transition: all 0.5s ease-in-out;
   cursor: pointer;
   z-index: 99;

@@ -1,32 +1,31 @@
-import { SigninApi, LoginInfo, SignupApi, SignupInfo } from '../../api/signin';
-import { call, put, takeEvery, delay } from 'redux-saga/effects';
-import type { Saga } from 'redux-saga';
 import {
-  loginAsync,
-  LOGIN_REQUEST,
-  signupAsync,
-  SIGNUP_REQUEST,
+  POST_SIGNIN,
+  POST_SIGNUP,
+  postSigninAsync,
+  postSignupAsync,
 } from './actions';
+import { postSignin, postSignup } from '../../api/sign';
+import { call, put, takeLatest } from 'redux-saga/effects';
 
-function* loginSaga(action: ReturnType<typeof loginAsync.request>) {
+function* postSigninSaga(action: ReturnType<typeof postSigninAsync.request>) {
   try {
-    const message: LoginInfo = yield call(SigninApi, action.payload);
-    yield put(loginAsync.success(message));
+    const message: { message: string } = yield call(postSignin, action.payload);
+    yield put(postSigninAsync.success(message));
   } catch (e) {
-    yield put(loginAsync.failure(e));
+    yield put(postSigninAsync.failure(e));
   }
 }
 
-function* signupSaga(action: ReturnType<typeof signupAsync.request>) {
+function* postSignupSaga(action: ReturnType<typeof postSignupAsync.request>) {
   try {
-    const message: SignupInfo = yield call(SignupApi, action.payload);
-    yield put(loginAsync.success(message));
+    const message: { message: string } = yield call(postSignup, action.payload);
+    yield put(postSignupAsync.success(message));
   } catch (e) {
-    yield put(loginAsync.failure(e));
+    yield put(postSignupAsync.failure(e));
   }
 }
 
-export function* actionWatcher() {
-  yield takeEvery(LOGIN_REQUEST, loginSaga);
-  yield takeEvery(SIGNUP_REQUEST, signupSaga);
+export function* signSaga() {
+  yield takeLatest(POST_SIGNIN, postSigninSaga);
+  yield takeLatest(POST_SIGNUP, postSignupSaga);
 }

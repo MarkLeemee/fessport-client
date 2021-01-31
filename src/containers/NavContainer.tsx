@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Dropdown, MyDropdown } from '../components/Nav';
+import { MyDropdown } from '../components/Nav';
 import { SignModal } from '../components/ModalSign';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../modules';
 
 const NavContainer = (): JSX.Element => {
   const [click, setClick] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
   const [myDropdown, setMyDropdwon] = useState(false);
   const [topNav, setTopNav] = useState(true);
   const [topButton, setTopButton] = useState(false);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
-  const { login } = useSelector((state: RootState) => state.login.userInfo);
-  const { data } = useSelector((state: RootState) => state.userInfo);
+  const { isLogin } = useSelector((state: RootState) => state.sign);
 
   const handleScrollUp = () => {
     window.scrollTo({
@@ -45,20 +43,6 @@ const NavContainer = (): JSX.Element => {
     window.addEventListener('scroll', handleScroll);
   });
 
-  const onMouseEnter = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(true);
-    }
-  };
-  const onMouseLeave = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(false);
-    }
-  };
   const onMyMouseEnter = () => {
     if (window.innerWidth < 960) {
       setMyDropdwon(false);
@@ -106,22 +90,7 @@ const NavContainer = (): JSX.Element => {
             </Link>
           </li>
 
-          <li
-            className="nav-item"
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-          >
-            <Link
-              to="/Community"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              Community <i className="fas fa-caret-down" />
-            </Link>
-            {dropdown && <Dropdown />}
-          </li>
-
-          <li className="nav-item"> | </li>
+          <li className="nav-item bar"> | </li>
 
           <li
             className="nav-item"
@@ -137,19 +106,24 @@ const NavContainer = (): JSX.Element => {
             </Link>
             {myDropdown && <MyDropdown />}
           </li>
-
-          <li className="nav-item">
-            <li className="nav-item">
-              <a className="nav-links" onClick={toggleModal}>
-                SignIn
-              </a>
-            </li>
-            <SignModal
-              title={'FESSPORT SIGN!'}
-              isOpen={isModalOpen}
-              onClose={toggleModal}
-            ></SignModal>
-          </li>
+          {!isLogin ? (
+            <>
+              <li className="nav-item">
+                <li className="nav-item">
+                  <div className="nav-links" onClick={toggleModal}>
+                    SignIn
+                  </div>
+                </li>
+              </li>
+              <SignModal
+                title={'FESSPORT SIGN!'}
+                isOpen={isModalOpen}
+                onClose={toggleModal}
+              ></SignModal>
+            </>
+          ) : (
+            <div>logout</div>
+          )}
         </ul>
       </Container>
       {topButton && (
@@ -259,7 +233,7 @@ const Container = styled.div<{ topNav: boolean }>`
       transition: all 0.5s ease;
     }
     .nav-menu.active {
-      background: #242222;
+      background: rgb(21, 21, 31);
       left: 0;
       opacity: 1;
       transition: all 0.5s ease;
@@ -310,6 +284,9 @@ const Container = styled.div<{ topNav: boolean }>`
       background: #fff;
       color: #1888ff;
       transition: 250ms;
+    }
+    .bar {
+      display: none;
     }
     button {
       display: none;
