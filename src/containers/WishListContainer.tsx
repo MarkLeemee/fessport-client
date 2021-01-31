@@ -35,40 +35,48 @@ const WishListContainer = (): JSX.Element => {
       ) : (
         data && (
           <WishListPresenter>
-            <FestivalCategory>
-              <FestivalCategoryHead> Festival Wish List </FestivalCategoryHead>
-              <FestivalSection>
-                {data.wishfestivals &&
-                  data.wishfestivals.map((item, index) => (
-                    <FestivalLink
-                      key={item._id}
-                      to={`/festival/detail/${item._id}`}
-                    >
-                      <FestivalContent className="festivalContent">
-                        <FestivalName>{item.name}</FestivalName>
-                      </FestivalContent>
-                      <FestivalImage src={item.poster} />
-                    </FestivalLink>
-                  ))}
-              </FestivalSection>
-            </FestivalCategory>
-            <FestivalCategory>
-              <FestivalCategoryHead> Artist Wish List </FestivalCategoryHead>
-              <ArtistSection>
-                {data.wishArtist &&
-                  data.wishArtist.map((item) => (
-                    <ArtistLink
-                      key={item._id}
-                      to={`/artist/detail/${item._id}`}
-                    >
-                      <ArtistContent className="artistContent">
-                        <ArtistName>{item.name}</ArtistName>
-                      </ArtistContent>
-                      <ArtistImage src={item.image} />
-                    </ArtistLink>
-                  ))}
-              </ArtistSection>
-            </FestivalCategory>
+            <WishSection>
+              <WishSectionHead> Festival Wish List </WishSectionHead>
+              {data.wishfestivals.length === 0 ? (
+                <EmptyMessage>찜해둔 페스티벌이 없습니다.</EmptyMessage>
+              ) : (
+                <FestivalSection>
+                  {data.wishfestivals &&
+                    data.wishfestivals.map((item, index) => (
+                      <FestivalLink
+                        key={item._id}
+                        to={`/festival/detail/${item._id}`}
+                      >
+                        <FestivalContent className="festivalContent">
+                          <FestivalName>{item.name}</FestivalName>
+                        </FestivalContent>
+                        <FestivalImage src={item.poster} />
+                      </FestivalLink>
+                    ))}
+                </FestivalSection>
+              )}
+            </WishSection>
+            <WishSection>
+              <WishSectionHead> Artist Wish List </WishSectionHead>
+              {data.wishArtist.length === 0 ? (
+                <EmptyMessage>찜해둔 아티스트가 없습니다.</EmptyMessage>
+              ) : (
+                <ArtistSection>
+                  {data.wishArtist &&
+                    data.wishArtist.map((item) => (
+                      <ArtistLink
+                        key={item._id}
+                        to={`/artist/detail/${item._id}`}
+                      >
+                        <ArtistContent className="artistContent">
+                          <ArtistName>{item.name}</ArtistName>
+                        </ArtistContent>
+                        <ArtistImage src={item.image} />
+                      </ArtistLink>
+                    ))}
+                </ArtistSection>
+              )}
+            </WishSection>
           </WishListPresenter>
         )
       )}
@@ -97,13 +105,20 @@ const WishListPresenter = styled.div`
   margin-right: 10%;
 `;
 
-const FestivalCategory = styled.div`
+const EmptyMessage = styled.div`
+  margin-top: 5%;
+  font-size: 1.5rem;
+  font-weight: 600;
+`;
+
+const WishSection = styled.div`
+  width: 50%;
   padding: 2%;
   margin-right: 50px;
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
-const FestivalCategoryHead = styled.div`
+const WishSectionHead = styled.div`
   font-size: 2rem;
   font-weight: 500;
 `;

@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ReactPlayer from 'react-player';
 import Slider from 'react-slick';
+import ModalMessage from '../components/ModalMessage';
 import Loader from '../pages/Loader';
 import ErrorMessage from '../pages/ErrorMessage';
 
@@ -29,6 +30,7 @@ const FestivalDetailContainer = (): JSX.Element => {
 
   const [isModal, setIsModal] = useState(false);
   const [nowVideo, setNowVideo] = useState('');
+  const [isMessage, setIsMessage] = useState(false);
 
   const { data, loading, error, isLogin } = useSelector((state: RootState) => ({
     data: state.festival.festivalDetail.data,
@@ -53,7 +55,7 @@ const FestivalDetailContainer = (): JSX.Element => {
 
   const handleVisitButton = () => {
     if (!isLogin) {
-      console.log('login이 필요한 기능입니다.');
+      setIsMessage(true);
     } else if (data && data.visited) {
       dispatch(postUnvisitedFestivalAsync.request(params._id));
     } else {
@@ -63,7 +65,7 @@ const FestivalDetailContainer = (): JSX.Element => {
 
   const handleLikeButton = () => {
     if (!isLogin) {
-      console.log('login이 필요한 기능입니다.');
+      setIsMessage(true);
     } else if (data && data.isLiked) {
       dispatch(postDislikeFestivalAsync.request(params._id));
     } else {
@@ -90,6 +92,12 @@ const FestivalDetailContainer = (): JSX.Element => {
             url={`https://youtu.be/${nowVideo}`}
           />
         </PlayerModal>
+      )}
+      {isMessage && (
+        <ModalMessage
+          message="로그인이 필요한 기능입니다."
+          setIsMessage={setIsMessage}
+        />
       )}
       {loading && <Loader />}
       {error && <ErrorMessage />}
