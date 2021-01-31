@@ -202,7 +202,7 @@ const BackgorundImage = styled.div`
   opacity: 0.3;
   background: radial-gradient(black 35%, transparent 1%),
     url('/images/wall.jpg');
-  background-size: 3px 3px, contain;
+  background-size: 3px 3px, auto;
   z-index: -1;
 `;
 
@@ -261,7 +261,6 @@ const FestivalCategoryContent = styled.div`
 const ContentsSection = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 70%;
   margin-left: 5%;
 
@@ -329,6 +328,7 @@ const FestivalName = styled.div``;
 
 const FestivalPoster = styled.img`
   width: 100%;
+  height: 100%;
 `;
 
 const MoreButton = styled.div`

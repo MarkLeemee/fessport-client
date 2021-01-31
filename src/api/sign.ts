@@ -27,7 +27,7 @@ export interface ISigninInfo {
 }
 
 export interface ISignupInfo {
+  email: string;
   nickname: string;
   password: string;
-  email: string;
 }

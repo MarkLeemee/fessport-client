@@ -5,6 +5,7 @@ export type SignAction = ActionType<typeof actions>;
 
 export type SignState = {
   isLogin: boolean;
+  signupSuccess: boolean;
   loading: boolean;
   error: Error | null;
   data: { message: string } | null;

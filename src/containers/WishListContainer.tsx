@@ -93,7 +93,7 @@ const BackgorundImage = styled.div`
   opacity: 0.3;
   background: radial-gradient(black 35%, transparent 1%),
     url('/images/wall2.jpg');
-  background-size: 3px 3px, contain;
+  background-size: 3px 3px, auto;
   z-index: -1;
 `;
 

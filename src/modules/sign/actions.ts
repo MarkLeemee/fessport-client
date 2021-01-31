@@ -10,6 +10,10 @@ export const POST_SIGNUP = 'sign/POST_SIGNUP' as const;
 export const POST_SIGNUP_SUCCESS = 'sign/POST_SIGNUP_SUCCESS' as const;
 export const POST_SIGNUP_ERROR = 'sign/POST_SIGNUP_ERROR' as const;
 
+export const GET_SIGNOUT = 'sign/GET_SIGNOUT' as const;
+export const GET_SIGNOUT_SUCCESS = 'sign/GET_SIGNOUT_SUCCESS' as const;
+export const GET_SIGNOUT_ERROR = 'sign/GET_SIGNOUT_ERROR' as const;
+
 export const postSigninAsync = createAsyncAction(
   POST_SIGNIN,
   POST_SIGNIN_SUCCESS,
@@ -21,3 +25,9 @@ export const postSignupAsync = createAsyncAction(
   POST_SIGNUP_SUCCESS,
   POST_SIGNUP_ERROR,
 )<ISignupInfo, { message: string }, AxiosError>();
+
+export const getSignoutAsync = createAsyncAction(
+  GET_SIGNOUT,
+  GET_SIGNOUT_SUCCESS,
+  GET_SIGNOUT_ERROR,
+)<undefined, { message: string }, AxiosError>();

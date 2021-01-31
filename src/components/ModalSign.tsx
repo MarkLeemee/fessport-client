@@ -1,338 +1,182 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../modules';
 import { postSigninAsync, postSignupAsync } from '../modules/sign';
+import styled from 'styled-components';
 
-interface ModalProps {
-  title: string;
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export const SignModal = ({ title, isOpen, onClose }: ModalProps) => {
-  const outsideRef = React.useRef(null);
-  const [goSignup, setSignUp] = useState(false);
-  const handleSignup = () => setSignUp(!goSignup);
-
-  // outside 누르면 onClose
-  const handleCloseOnOverlay = (
-    e: React.MouseEvent<HTMLElement, MouseEvent>,
-  ) => {
-    if (e.target === outsideRef.current) {
-      onClose();
-      setSignUp(false);
-    }
-  };
-
-  // ---------------- SIGN IN logic ----------------------
+const ModalSign = ({
+  setIsSignModal,
+}: {
+  setIsSignModal: React.Dispatch<React.SetStateAction<boolean>>;
+}): JSX.Element => {
+  const [isSignup, setIsSignup] = useState(false);
+  const [inputEmail, setInputEmail] = useState('');
+  const [inputPassword, setInputPassword] = useState('');
+  const [inputCheckPassword, setInputCheckPassword] = useState('');
+  const [inputNickname, setInputNickname] = useState('');
+  const [message, setMessage] = useState('');
+  const { isLogin, signupSuccess, error } = useSelector(
+    (state: RootState) => state.sign,
+  );
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const { isLogin } = useSelector((state: RootState) => state.sign);
 
-  const onSubmitHandler = (e: any): void => {
-    const userInfo = {
-      email: email,
-      password: password,
-    };
-    if (!email || !password) {
+  const handleSignin = () => {
+    if (!inputEmail || !inputPassword) {
+      setMessage('아이디와 비밀번호 모두 입력해주세요.');
     } else {
-      e.preventDefault();
-      dispatch(postSigninAsync.request(userInfo));
-      onClose();
+      const signinInfo = {
+        email: inputEmail,
+        password: inputPassword,
+      };
+      dispatch(postSigninAsync.request(signinInfo));
     }
   };
 
-  // ---------------- SIGN UP logic ----------------------
-  const [signUpEmail, setSignUpEmail] = useState('');
-  const [signUpNick, setSignUpNick] = useState('');
-  const [signUpPassword, setSignUpPassword] = useState('');
-  const [signUpCPassword, setSignUpCPassword] = useState('');
-
-  const onSignUpHandler = (e: any) => {
-    if (signUpCPassword !== signUpPassword) {
-      alert('비번틀림');
-    }
-    e.preventDefault();
-    const userInfo = {
-      email: signUpEmail,
-      nickname: signUpNick,
-      password: signUpPassword,
-    };
-    dispatch(postSignupAsync.request(userInfo));
-    handleSignup();
+  const isEmail = (email: string) => {
+    const emailRegex = /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+    return emailRegex.test(email);
   };
 
-  return isOpen ? (
-    <Modal className={'modal'}>
-      <div
-        ref={outsideRef}
-        className={'modal__overlay'}
-        onClick={handleCloseOnOverlay}
-      />
-      {/* <button className={'modal__close'} onClick={onClose}>
-        <i className={'fas fa-times'} />
-    </button> */}
-      <div className={'modal__box'}>
-        <div className="modal__header">
-          <h2 className={'modal__title'}>{title}</h2>
-        </div>
-        <div className="modal__break"></div>
-        {!goSignup ? (
-          <form className="modal__form">
-            <ol className="modal__ol">
-              <li className="modal__list">
-                <label className="modal__text"> EMAIL: </label>
-                <input
-                  type="email"
-                  className="modal__item"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </li>
-              <li className="modal__list">
-                <label className="modal__text"> PASSWORD: </label>
-                <input
-                  type="password"
-                  className="modal__item"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </li>
-              <li className="modal__list">
-                <input
-                  type="submit"
-                  value="SIGNIN >"
-                  className="modal__sign"
-                  onClick={onSubmitHandler}
-                />
-              </li>
-              <li className="modal__list">
-                <input
-                  type="submit"
-                  value="SIGN UP >"
-                  className="modal__sign"
-                  onClick={handleSignup}
-                />
-              </li>
-            </ol>
-          </form>
-        ) : (
-          <Form>
-            <li className="signup__list">
-              <label className="signup-text"> EMAIL: </label>
-              <input
-                type="email"
-                className="signup-input"
-                onChange={(e) => setSignUpEmail(e.target.value)}
-              />
-            </li>
-            <li className="signup__list">
-              <label className="signup-text"> NICK NAME: </label>
-              <input
-                type="text"
-                className="signup-input"
-                onChange={(e) => setSignUpNick(e.target.value)}
-              />
-            </li>
+  function isPassword(password: string) {
+    const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,20}$/;
+    return passwordRegex.test(password);
+  }
 
-            <li className="signup__list">
-              <label className="signup-text"> PASSWORD: </label>
-              <input
-                type="email"
-                className="signup-input"
-                onChange={(e) => setSignUpPassword(e.target.value)}
-              />
-            </li>
-            <li className="signup__list">
-              <label className="signup-text"> CONFIRM YOUR PASSWORD: </label>
-              <input
-                type="email"
-                className="signup-input"
-                onChange={(e) => setSignUpCPassword(e.target.value)}
-              />
-            </li>
-            <li className="signup__list">
-              <input
-                type="submit"
-                value="SIGNUP >"
-                className="modal__sign"
-                onClick={onSignUpHandler}
-              />
-            </li>
-            <li className="signup__list">
-              <input
-                type="submit"
-                value="BACK >"
-                className="modal__sign"
-                onClick={handleSignup}
-              />
-            </li>
-          </Form>
-        )}
-      </div>
-    </Modal>
-  ) : null;
+  const handleSignup = () => {
+    if (!isEmail(inputEmail)) {
+      setMessage('이메일 형식이 올바르지 않습니다.');
+    } else if (!inputNickname) {
+      setMessage('닉네임을 입력해주세요.');
+    } else if (!isPassword(inputPassword)) {
+      setMessage('8~20자리 사이의 영어와 숫자조합의 비밀번호를 입력해주세요.');
+    } else if (inputPassword !== inputCheckPassword) {
+      setMessage('비밀번호가 일치하지 않습니다.');
+    } else {
+      const signinInfo = {
+        email: inputEmail,
+        nickname: inputNickname,
+        password: inputPassword,
+      };
+      dispatch(postSignupAsync.request(signinInfo));
+    }
+  };
+
+  useEffect(() => {
+    if (isLogin || signupSuccess) {
+      setIsSignModal(false);
+    } else if (error) {
+      setMessage('SIGNIN/SIGNUP 작업에 실패하였습니다.');
+    }
+  }, [isLogin, error]);
+
+  return (
+    <SignPresenter onClick={() => setIsSignModal(false)}>
+      {!isSignup ? (
+        <SigninBox onClick={(e) => e.stopPropagation()}>
+          <SigninTitle> FESSPORT LOGIN </SigninTitle>
+          <InputEmail
+            placeholder="E-MAIL"
+            onChange={(e) => setInputEmail(e.target.value)}
+          />
+          <InputEmail
+            placeholder="PASSWORD"
+            onChange={(e) => setInputPassword(e.target.value)}
+          />
+          <MessagePresenter>{message}</MessagePresenter>
+          <SignButton onClick={handleSignin}>LOGIN</SignButton>
+          <SignButton onClick={() => setIsSignup(true)}>SINGUP</SignButton>
+        </SigninBox>
+      ) : (
+        <SigninBox onClick={(e) => e.stopPropagation()}>
+          <SigninTitle> FESSPORT SIGNUP </SigninTitle>
+          <InputEmail
+            placeholder="E-MAIL"
+            onChange={(e) => setInputEmail(e.target.value)}
+          />
+          <InputEmail
+            placeholder="NICKNAME"
+            onChange={(e) => setInputNickname(e.target.value)}
+          />
+          <InputEmail
+            placeholder="PASSWORD"
+            onChange={(e) => setInputPassword(e.target.value)}
+          />
+          <InputEmail
+            placeholder="CHECK PASSWORD"
+            onChange={(e) => setInputCheckPassword(e.target.value)}
+          />
+          <MessagePresenter>{message}</MessagePresenter>
+          <SignButton onClick={handleSignup}>SIGNUP</SignButton>
+        </SigninBox>
+      )}
+    </SignPresenter>
+  );
 };
 
-const Form = styled.div`
-  font-size: 14px;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 33% 33% 33%;
-  .signup-text {
-    font-size: 14px;
-    text-align: start;
-    color: white;
-  }
-  .signup-input {
-    padding-top: 5px;
-    background: none;
-    color: #b8e3f4;
-    box-sizing: border-box;
-    padding: 5px;
-    border: 0px;
-    border-bottom: 1px solid #666;
-  }
-  .signup__list {
-    max-width: 90%;
-    font-size: 14px;
-    display: grid;
-    grid-template-rows: 35px;
-    margin-bottom: 36px;
-  }
-`;
-
-const Modal = styled.div`
+const SignPresenter = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30, 30, 30, 0.9);
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  width: 100vw;
-  heigth: 100vhh;
+  align-items: center;
+  z-index: 100;
+`;
 
-  .modal__header {
-    position: flex;
-    margin: 10px;
-    border: 10px;
-  }
+const SigninBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  height: 60%;
+  border-radius: 20px;
+`;
 
-  .modal__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    cursor: pointer;
-  }
+const SigninTitle = styled.div`
+  margin-bottom: 10%;
+  font-size: 3rem;
+`;
 
-  .modal__box {
-    position: relative;
-    width: 100%;
-    margin: auto;
-    max-width: 100%;
-    box-sizing: border-box;
-    cursor: auto;
+const InputEmail = styled.input`
+  width: 100%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding: 15px;
+  padding-left: 20px;
+  color: white;
+  border-bottom: 1px solid gray;
+  background: transparent;
+  font-size: 1rem;
+  &:hover {
+    outline: 1px solid white;
   }
-
-  .modal__break {
-    max-width: 95%;
-    height: 1px;
-    opacity: 0.5;
-    position: relative;
-    margin-bottom: 45px;
-    background: linear-gradient(to right, white 0%, #999 100%);
-  }
-
-  .modal__title {
-    color: #9e25fc;
-    text-align: start;
-    font-size: 28px;
-    font-weight: normal;
-  }
-
-  .modal__close {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    transform: translate(-100%, 60%);
-    font-size: 14px;
-    cursor: pointer;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.9);
-
-    .modal__close :hover {
-      transform: rotate(180deg);
-    }
-  }
-
-  @media screen and (min-width: 800px) {
-    .modal__box {
-      max-width: 600px;
-      margin: 0 30px;
-    }
-  }
-
-  .modal__form {
-    vertical-align: baseline;
-    line-height: 100%;
-  }
-
-  .modal__ol {
-    font-size: 14px;
-    display: grid;
-    grid-template-columns: 50% 50%;
-  }
-
-  .modal__list {
-    max-width: 90%;
-    font-size: 14px;
-    display: grid;
-    grid-template-rows: 35px;
-    margin-bottom: 36px;
-  }
-
-  .modal__item {
-    padding-top: 5px;
-    background: none;
-    color: #b8e3f4;
-    box-sizing: border-box;
-    padding: 5px;
-    border: 0px;
-    border-bottom: 1px solid #666;
-  }
-
-  .modal__sign {
-    width: auto;
-    min-width: 150px;
-    max-width: 150px;
-    font-size: 14px;
-    cursor: pointer;
-    padding: 12px 24px;
-    background-color: #94f2ff;
-    border: 1px solid #94f2ff !important;
-    &:hover {
-      background: #fff;
-      border: 1px solid #fff !important;
-    }
-  }
-  .modal__text {
-    text-align: start;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: white;
-  }
-  .modal__signup {
-    width: auto;
-    min-width: 150px;
-    max-width: 150px;
-    font-size: 14px;
-    cursor: pointer;
-    // background-color: #94f2ff;
+  &:focus {
+    background: rgba(170, 170, 170, 0.3);
   }
 `;
+
+const MessagePresenter = styled.div`
+  width: 100%;
+  height: 50px;
+  margin-top: 5%;
+  text-align: center;
+  font-size: 1rem;
+`;
+
+const SignButton = styled.div`
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  &:hover {
+    border-bottom: 1px solid rgba(0, 250, 250);
+  }
+  transition: all 0.2s ease-in-out;
+`;
+
+export default ModalSign;
