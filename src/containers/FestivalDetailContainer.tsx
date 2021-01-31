@@ -30,9 +30,13 @@ const FestivalDetailContainer = (): JSX.Element => {
   const [isModal, setIsModal] = useState(false);
   const [nowVideo, setNowVideo] = useState('');
 
-  const { data, loading, error } = useSelector(
-    (state: RootState) => state.festival.festivalDetail,
-  );
+  const { data, loading, error, isLogin } = useSelector((state: RootState) => ({
+    data: state.festival.festivalDetail.data,
+    loading: state.festival.festivalDetail.loading,
+    error: state.festival.festivalDetail.error,
+    isLogin: state.sign.isLogin,
+  }));
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -48,7 +52,9 @@ const FestivalDetailContainer = (): JSX.Element => {
   };
 
   const handleVisitButton = () => {
-    if (data && data.visited) {
+    if (!isLogin) {
+      console.log('login이 필요한 기능입니다.');
+    } else if (data && data.visited) {
       dispatch(postUnvisitedFestivalAsync.request(params._id));
     } else {
       dispatch(postVisitedFestivalAsync.request(params._id));
@@ -56,9 +62,11 @@ const FestivalDetailContainer = (): JSX.Element => {
   };
 
   const handleLikeButton = () => {
-    if (data && data.isLiked) {
+    if (!isLogin) {
+      console.log('login이 필요한 기능입니다.');
+    } else if (data && data.isLiked) {
       dispatch(postDislikeFestivalAsync.request(params._id));
-    } else if (data && !data.isLiked) {
+    } else {
       dispatch(postLikeFestivalAsync.request(params._id));
     }
   };

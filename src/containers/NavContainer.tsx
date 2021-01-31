@@ -90,7 +90,7 @@ const NavContainer = (): JSX.Element => {
             </Link>
           </li>
 
-          <li className="nav-item"> | </li>
+          <li className="nav-item bar"> | </li>
 
           <li
             className="nav-item"
@@ -107,18 +107,20 @@ const NavContainer = (): JSX.Element => {
             {myDropdown && <MyDropdown />}
           </li>
           {!isLogin ? (
-            <li className="nav-item">
+            <>
               <li className="nav-item">
-                <a className="nav-links" onClick={toggleModal}>
-                  SignIn
-                </a>
+                <li className="nav-item">
+                  <div className="nav-links" onClick={toggleModal}>
+                    SignIn
+                  </div>
+                </li>
               </li>
               <SignModal
                 title={'FESSPORT SIGN!'}
                 isOpen={isModalOpen}
                 onClose={toggleModal}
               ></SignModal>
-            </li>
+            </>
           ) : (
             <div>logout</div>
           )}
@@ -231,7 +233,7 @@ const Container = styled.div<{ topNav: boolean }>`
       transition: all 0.5s ease;
     }
     .nav-menu.active {
-      background: #242222;
+      background: rgb(21, 21, 31);
       left: 0;
       opacity: 1;
       transition: all 0.5s ease;
@@ -282,6 +284,9 @@ const Container = styled.div<{ topNav: boolean }>`
       background: #fff;
       color: #1888ff;
       transition: 250ms;
+    }
+    .bar {
+      display: none;
     }
     button {
       display: none;

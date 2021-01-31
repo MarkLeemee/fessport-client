@@ -3,19 +3,23 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Loader from '../pages/Loader';
 import ErrorMessage from '../pages/ErrorMessage';
+import NotLogin from '../pages/NotLogin';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../modules';
 import { getWishListAsync } from '../modules/wish';
 
 const WishListContainer = (): JSX.Element => {
-  const { data, loading, error } = useSelector(
-    (state: RootState) => state.wish,
-  );
+  const { data, loading, error, isLogin } = useSelector((state: RootState) => ({
+    data: state.wish.data,
+    loading: state.wish.loading,
+    error: state.wish.error,
+    isLogin: state.sign.isLogin,
+  }));
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!data) {
+    if (isLogin && !data) {
       console.log('🐶🐶🐶🐶 WishList useEffect 🐶🐶🐶🐶');
       dispatch(getWishListAsync.request());
     }
@@ -26,40 +30,47 @@ const WishListContainer = (): JSX.Element => {
       <BackgorundImage />
       {loading && <Loader />}
       {error && <ErrorMessage />}
-      {data && (
-        <WishListPresenter>
-          <FestivalCategory>
-            <FestivalCategoryHead> Festival Wish List </FestivalCategoryHead>
-            <FestivalSection>
-              {data.wishfestivals &&
-                data.wishfestivals.map((item, index) => (
-                  <FestivalLink
-                    key={item._id}
-                    to={`/festival/detail/${item._id}`}
-                  >
-                    <FestivalContent className="festivalContent">
-                      <FestivalName>{item.name}</FestivalName>
-                    </FestivalContent>
-                    <FestivalImage src={item.poster} />
-                  </FestivalLink>
-                ))}
-            </FestivalSection>
-          </FestivalCategory>
-          <FestivalCategory>
-            <FestivalCategoryHead> Artist Wish List </FestivalCategoryHead>
-            <ArtistSection>
-              {data.wishArtist &&
-                data.wishArtist.map((item) => (
-                  <ArtistLink key={item._id} to={`/artist/detail/${item._id}`}>
-                    <ArtistContent className="artistContent">
-                      <ArtistName>{item.name}</ArtistName>
-                    </ArtistContent>
-                    <ArtistImage src={item.image} />
-                  </ArtistLink>
-                ))}
-            </ArtistSection>
-          </FestivalCategory>
-        </WishListPresenter>
+      {!isLogin ? (
+        <NotLogin />
+      ) : (
+        data && (
+          <WishListPresenter>
+            <FestivalCategory>
+              <FestivalCategoryHead> Festival Wish List </FestivalCategoryHead>
+              <FestivalSection>
+                {data.wishfestivals &&
+                  data.wishfestivals.map((item, index) => (
+                    <FestivalLink
+                      key={item._id}
+                      to={`/festival/detail/${item._id}`}
+                    >
+                      <FestivalContent className="festivalContent">
+                        <FestivalName>{item.name}</FestivalName>
+                      </FestivalContent>
+                      <FestivalImage src={item.poster} />
+                    </FestivalLink>
+                  ))}
+              </FestivalSection>
+            </FestivalCategory>
+            <FestivalCategory>
+              <FestivalCategoryHead> Artist Wish List </FestivalCategoryHead>
+              <ArtistSection>
+                {data.wishArtist &&
+                  data.wishArtist.map((item) => (
+                    <ArtistLink
+                      key={item._id}
+                      to={`/artist/detail/${item._id}`}
+                    >
+                      <ArtistContent className="artistContent">
+                        <ArtistName>{item.name}</ArtistName>
+                      </ArtistContent>
+                      <ArtistImage src={item.image} />
+                    </ArtistLink>
+                  ))}
+              </ArtistSection>
+            </FestivalCategory>
+          </WishListPresenter>
+        )
       )}
     </>
   );
@@ -73,7 +84,7 @@ const BackgorundImage = styled.div`
   height: 100vh;
   opacity: 0.3;
   background: radial-gradient(black 35%, transparent 1%),
-    url('/images/wall.jpg');
+    url('/images/wall2.jpg');
   background-size: 3px 3px, contain;
   z-index: -1;
 `;
