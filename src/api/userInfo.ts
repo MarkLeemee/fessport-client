@@ -1,25 +1,10 @@
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 
-// export async function getUserInfo(): Promise<IUserInfo | void> {
-//   const response = await axios.get<IUserInfo>(
-//     'https://fessport-server.com/user/myFessport',
-//   );
-//   return response.data;
-// }
-
-// export async function patchUserInfo(
-//   editUesrInfo: IEditUserInfo,
-// ): Promise<{ message: string } | void> {
-//   const response = await axios.patch<{ message: string }>(
-//     'https://fessport-server.com/user/edit',
-//     editUesrInfo,
-//   );
-//   return response.data;
-// }
-
 export async function getUserInfo(): Promise<IUserInfo | void> {
-  const response = await axios.get<IUserInfo>('/myFessport');
+  const response = await axios.get<IUserInfo>(
+    'https://fessport-server.com/user/myFessport',
+  );
   return response.data;
 }
 
@@ -27,24 +12,39 @@ export async function patchUserInfo(
   editUesrInfo: IEditUserInfo,
 ): Promise<{ message: string } | void> {
   const response = await axios.patch<{ message: string }>(
-    '/myFessport',
+    'https://fessport-server.com/user/edit',
     editUesrInfo,
   );
   return response.data;
 }
+
+// export async function getUserInfo(): Promise<IUserInfo | void> {
+//   const response = await axios.get<IUserInfo>('/myFessport');
+//   return response.data;
+// }
+
+// export async function patchUserInfo(
+//   editUesrInfo: IEditUserInfo,
+// ): Promise<{ message: string } | void> {
+//   const response = await axios.patch<{ message: string }>(
+//     '/myFessport',
+//     editUesrInfo,
+//   );
+//   return response.data;
+// }
 
 export interface IUserInfo {
   _id: string;
   nickName: string;
   email: string;
   image: string | null;
-  visit: IVisit[] | null;
+  visits: IVisits[] | null;
   badge: IBadge[] | null;
 }
 
-export interface IVisit {
+export interface IVisits {
   _id: string;
-  image: string;
+  stamp: string;
 }
 
 export interface IBadge {

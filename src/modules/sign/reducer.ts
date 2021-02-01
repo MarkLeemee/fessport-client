@@ -50,7 +50,7 @@ const sign = createReducer<SignState, SignAction>(initialState, {
     data: null,
   }),
   [POST_SIGNUP_SUCCESS]: (state, action) => ({
-    isLogin: false,
+    isLogin: true,
     signupSuccess: true,
     loading: false,
     error: null,

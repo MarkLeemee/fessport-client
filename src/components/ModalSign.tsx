@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../modules';
 import { postSigninAsync, postSignupAsync } from '../modules/sign';
@@ -19,18 +20,7 @@ const ModalSign = ({
     (state: RootState) => state.sign,
   );
   const dispatch = useDispatch();
-
-  const handleSignin = () => {
-    if (!inputEmail || !inputPassword) {
-      setMessage('아이디와 비밀번호 모두 입력해주세요.');
-    } else {
-      const signinInfo = {
-        email: inputEmail,
-        password: inputPassword,
-      };
-      dispatch(postSigninAsync.request(signinInfo));
-    }
-  };
+  const history = useHistory();
 
   const isEmail = (email: string) => {
     const emailRegex = /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
@@ -41,6 +31,20 @@ const ModalSign = ({
     const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,20}$/;
     return passwordRegex.test(password);
   }
+
+  const handleSignin = () => {
+    if (!isEmail(inputEmail)) {
+      setMessage('이메일 형식이 올바르지 않습니다.');
+    } else if (!inputEmail || !inputPassword) {
+      setMessage('아이디와 비밀번호 모두 입력해주세요.');
+    } else {
+      const signinInfo = {
+        email: inputEmail,
+        password: inputPassword,
+      };
+      dispatch(postSigninAsync.request(signinInfo));
+    }
+  };
 
   const handleSignup = () => {
     if (!isEmail(inputEmail)) {
@@ -62,23 +66,27 @@ const ModalSign = ({
   };
 
   useEffect(() => {
-    if (isLogin || signupSuccess) {
-      setIsSignModal(false);
+    if (isLogin) {
+      setMessage('');
+      setIsSignModal((state) => !state);
+      history.push('/');
     } else if (error) {
       setMessage('SIGNIN/SIGNUP 작업에 실패하였습니다.');
     }
   }, [isLogin, error]);
 
   return (
-    <SignPresenter onClick={() => setIsSignModal(false)}>
+    <SignPresenter onClick={() => setIsSignModal((state) => !state)}>
       {!isSignup ? (
         <SigninBox onClick={(e) => e.stopPropagation()}>
           <SigninTitle> FESSPORT LOGIN </SigninTitle>
           <InputEmail
+            type="email"
             placeholder="E-MAIL"
             onChange={(e) => setInputEmail(e.target.value)}
           />
           <InputEmail
+            type="password"
             placeholder="PASSWORD"
             onChange={(e) => setInputPassword(e.target.value)}
           />
@@ -90,6 +98,7 @@ const ModalSign = ({
         <SigninBox onClick={(e) => e.stopPropagation()}>
           <SigninTitle> FESSPORT SIGNUP </SigninTitle>
           <InputEmail
+            type="email"
             placeholder="E-MAIL"
             onChange={(e) => setInputEmail(e.target.value)}
           />
@@ -98,10 +107,12 @@ const ModalSign = ({
             onChange={(e) => setInputNickname(e.target.value)}
           />
           <InputEmail
+            type="password"
             placeholder="PASSWORD"
             onChange={(e) => setInputPassword(e.target.value)}
           />
           <InputEmail
+            type="password"
             placeholder="CHECK PASSWORD"
             onChange={(e) => setInputCheckPassword(e.target.value)}
           />
@@ -164,6 +175,7 @@ const MessagePresenter = styled.div`
   height: 50px;
   margin-top: 5%;
   text-align: center;
+  color: rgba(255, 101, 101, 0.8);
   font-size: 1rem;
 `;
 

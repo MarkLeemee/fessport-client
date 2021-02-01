@@ -107,13 +107,14 @@ const artist = createReducer<ArtistState, ArtistAction>(initialState, {
   [POST_LIKE_ARTIST]: (state) => ({
     ...state,
     artistDetail: {
-      loading: false,
+      loading: true,
       error: null,
       data: state.artistDetail.data,
     },
   }),
   [POST_LIKE_ARTIST_SUCCESS]: (state, action) => {
     if (state.artistDetail.data) {
+      state.artistDetail.loading = false;
       state.artistDetail.data.isLiked = true;
     }
     return JSON.parse(JSON.stringify(state));
@@ -129,13 +130,14 @@ const artist = createReducer<ArtistState, ArtistAction>(initialState, {
   [POST_DISLIKE_ARTIST]: (state) => ({
     ...state,
     artistDetail: {
-      loading: false,
+      loading: true,
       error: null,
       data: state.artistDetail.data,
     },
   }),
   [POST_DISLIKE_ARTIST_SUCCESS]: (state, action) => {
     if (state.artistDetail.data) {
+      state.artistDetail.loading = false;
       state.artistDetail.data.isLiked = false;
     }
     return JSON.parse(JSON.stringify(state));

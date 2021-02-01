@@ -450,6 +450,7 @@ const ArtistName = styled.div``;
 const ArtistImage = styled.img`
   width: 100%;
   height: 100%;
+  object-fit: cover;
 `;
 
 const StyledSlider = styled(Slider)`

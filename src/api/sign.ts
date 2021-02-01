@@ -5,7 +5,7 @@ export async function postSignin(
   param: ISigninInfo,
 ): Promise<{ message: string } | void> {
   const response = await axios.post<{ message: string }>(
-    'https://localhost:4000/auth/login',
+    'https://fessport-server.com/login',
     param,
   );
   return response.data;
@@ -15,7 +15,7 @@ export async function postSignup(
   param: ISignupInfo,
 ): Promise<{ message: string } | void> {
   const response = await axios.post<{ message: string }>(
-    'https://localhost:4000/auth/signup',
+    'https://fessport-server.com/signup',
     param,
   );
   return response.data;

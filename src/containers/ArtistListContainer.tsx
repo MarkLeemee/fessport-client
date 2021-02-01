@@ -25,6 +25,7 @@ const ArtistListContainer = (): JSX.Element => {
 
   const LIMIT = 9;
 
+  const [listNumber, setListNumber] = useState(20);
   const [offset, setOffset] = useState(0);
   const [inputQuery, setInputQuery] = useState<IInputQuery>({
     genreId: query.get('genreId'),
@@ -56,7 +57,7 @@ const ArtistListContainer = (): JSX.Element => {
 
   useEffect(() => {
     console.log('🔥🔥🔥🔥 Artist List(queryState) useEffect 🔥🔥🔥🔥');
-    query.set('offset', String(offset));
+    query.set('offset', String(0));
     query.set('limit', String(LIMIT));
     queryString = query.toString();
     setInputQuery({
@@ -116,11 +117,22 @@ const ArtistListContainer = (): JSX.Element => {
             onKeyPress={handleSearch}
           ></SearchBar>
           {artistCategory.data &&
-            artistCategory.data.map((item) => (
-              <Link key={`${item._id}`} to={`/artist/detail/${item._id}`}>
-                <ArtistCategorylContetn>{item.name}</ArtistCategorylContetn>
-              </Link>
-            ))}
+            artistCategory.data
+              .filter((item, index) => index < listNumber)
+              .map((item) => (
+                <Link key={`C${item._id}`} to={`/artist/detail/${item._id}`}>
+                  <ArtistCategorylContetn>{item.name}</ArtistCategorylContetn>
+                </Link>
+              ))}
+          {artistCategory.data && artistCategory.data.length > listNumber && (
+            <MoreButton
+              onClick={() => {
+                setListNumber((state) => state + 20);
+              }}
+            >
+              <MoreButtonText>More...</MoreButtonText>
+            </MoreButton>
+          )}
         </ArtistCategory>
         <ContentsSection>
           <CategorySection>

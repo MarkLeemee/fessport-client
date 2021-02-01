@@ -30,6 +30,7 @@ const FestivalListContainer = (): JSX.Element => {
 
   const LIMIT = 9;
 
+  const [listNumber, setListNumber] = useState(20);
   const [offset, setOffset] = useState(0);
   const [inputQuery, setInputQuery] = useState<IInputQuery>({
     countryId: query.get('countryId'),
@@ -69,7 +70,7 @@ const FestivalListContainer = (): JSX.Element => {
 
   useEffect(() => {
     console.log('🔥🔥🔥🔥 Festival List(queryState) useEffect 🔥🔥🔥🔥');
-    query.set('offset', String(offset));
+    query.set('offset', String(0));
     query.set('limit', String(LIMIT));
     queryString = query.toString();
     setInputQuery({
@@ -130,11 +131,22 @@ const FestivalListContainer = (): JSX.Element => {
             onKeyPress={handleSearch}
           />
           {festivalCategory.data &&
-            festivalCategory.data.map((item) => (
-              <Link key={`C${item._id}`} to={`/festival/detail/${item._id}`}>
-                <FestivalCategoryContent>{item.name}</FestivalCategoryContent>
-              </Link>
-            ))}
+            festivalCategory.data
+              .filter((item, index) => index < listNumber)
+              .map((item) => (
+                <Link key={`C${item._id}`} to={`/festival/detail/${item._id}`}>
+                  <FestivalCategoryContent>{item.name}</FestivalCategoryContent>
+                </Link>
+              ))}
+          {festivalCategory.data && festivalCategory.data.length > listNumber && (
+            <MoreButton
+              onClick={() => {
+                setListNumber((state) => state + 20);
+              }}
+            >
+              <MoreButtonText>More...</MoreButtonText>
+            </MoreButton>
+          )}
         </FestivalCategory>
         <ContentsSection>
           <CategorySection>

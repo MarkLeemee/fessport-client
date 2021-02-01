@@ -342,7 +342,7 @@ const FestivalName = styled.div``;
 
 const FestivalImage = styled.img`
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 `;
 
 const StyledSlider = styled(Slider)`

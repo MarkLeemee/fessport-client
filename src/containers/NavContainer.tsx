@@ -7,6 +7,7 @@ import { RootState } from '../modules';
 import { getSignoutAsync } from '../modules/sign';
 
 const NavContainer = (): JSX.Element => {
+  const [clickedNavIcon, setClickedNavIcon] = useState(false);
   const [isSignModal, setIsSignModal] = useState(false);
   const [topNav, setTopNav] = useState(true);
   const [topButton, setTopButton] = useState(false);
@@ -44,6 +45,7 @@ const NavContainer = (): JSX.Element => {
         <SubPage>
           <SubPageLink to="/festival/list">Festival </SubPageLink>
           <SubPageLink to="/artist/list">Artist</SubPageLink>
+          <SubPageLink to="/artist/list">Community</SubPageLink>
           <FessportHover>
             Fessport
             <div className="SubFessport">
@@ -63,7 +65,24 @@ const NavContainer = (): JSX.Element => {
             <SignControll onClick={handleSignout}>Logout</SignControll>
           )}
         </SubPage>
+        <NavIcon
+          onClick={() => {
+            setClickedNavIcon(!clickedNavIcon);
+          }}
+        >
+          <i className={clickedNavIcon ? 'fas fa-times' : 'fas fa-bars'} />
+        </NavIcon>
       </NavPresenter>
+      {/* {clickedNavIcon && 
+      <ActiveBar>
+        <ActivLink></ActivLink>
+        <ActivLink></ActivLink>
+        <ActivLink></ActivLink>
+        <ActivLink></ActivLink>
+        <ActivLink></ActivLink>
+        <ActivLink></ActivLink>
+      </ActiveBar>
+      } */}
       {topButton && (
         <TopButton
           src="/images/up.png"
@@ -74,6 +93,14 @@ const NavContainer = (): JSX.Element => {
     </>
   );
 };
+
+const NavIcon = styled.div`
+  display: none;
+  @media only screen and (max-width: 960px) {
+    display: block;
+    margin-right: 10%;
+  }
+`;
 
 const NavPresenter = styled.div<{ topNav: boolean }>`
   position: fixed;
@@ -87,17 +114,23 @@ const NavPresenter = styled.div<{ topNav: boolean }>`
   background-color: ${(props) =>
     props.topNav ? 'transparant' : 'rgb(21,21,31)'};
   transition: all 0.3s;
-  z-index: 100;
+  z-index: 99;
+  @media only screen and (max-width: 960px) {
+  }
 `;
 
 const MainPageLink = styled(Link)`
   margin-left: 10%;
   font-size: 2rem;
+  z-index: 99;
 `;
 
 const SubPage = styled.div`
   display: flex;
   margin-right: 10%;
+  @media only screen and (max-width: 960px) {
+    display: none;
+  }
 `;
 
 const SubPageLink = styled(Link)`
@@ -108,6 +141,8 @@ const SubPageLink = styled(Link)`
   color: rgba(170, 170, 170);
   &:hover {
     color: white;
+  }
+  @media only screen and (max-width: 960px) {
   }
 `;
 
@@ -133,6 +168,8 @@ const FessportHover = styled.ul`
       float: none;
     }
   }
+  @media only screen and (max-width: 960px) {
+  }
 `;
 
 const FessportSubPageLink = styled.li`
@@ -147,6 +184,8 @@ const FessportSubPageLink = styled.li`
     color: white;
     background-color: rgba(170, 170, 170, 0.3);
   }
+  @media only screen and (max-width: 960px) {
+  }
 `;
 
 const SignControll = styled.div`
@@ -157,6 +196,8 @@ const SignControll = styled.div`
   cursor: pointer;
   &:hover {
     color: white;
+  }
+  @media only screen and (max-width: 960px) {
   }
 `;
 
