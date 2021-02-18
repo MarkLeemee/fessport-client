@@ -2,9 +2,14 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 export async function getMapData(): Promise<IMap[] | void> {
-  const response = await axios.get<IMap[]>('/map');
+  const response = await axios.get<IMap[]>('https://fessport-server.com/main');
   return response.data;
 }
+
+// export async function getMapData(): Promise<IMap[] | void> {
+//   const response = await axios.get<IMap[]>('/map');
+//   return response.data;
+// }
 
 export interface IMap {
   _id: string;

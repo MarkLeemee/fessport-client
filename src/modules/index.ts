@@ -8,6 +8,7 @@ import sign, { signSaga } from './sign';
 import userInfo, { userInfoSaga } from './userInfo';
 import category, { categorySaga } from './category';
 import image, { imageSaga } from './image';
+import admin, { adminSaga } from './admin';
 
 const rootReducer = combineReducers({
   map,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   userInfo,
   category,
   image,
+  admin,
 });
 
 export function* rootSaga() {
@@ -30,6 +32,7 @@ export function* rootSaga() {
     userInfoSaga(),
     imageSaga(),
     categorySaga(),
+    adminSaga(),
   ]);
 }
 

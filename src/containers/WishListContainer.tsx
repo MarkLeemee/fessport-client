@@ -37,12 +37,12 @@ const WishListContainer = (): JSX.Element => {
           <WishListPresenter>
             <WishSection>
               <WishSectionHead> Festival Wish List </WishSectionHead>
-              {data.wishfestivals.length === 0 ? (
+              {data.wishFestivals && data.wishFestivals.length === 0 ? (
                 <EmptyMessage>찜해둔 페스티벌이 없습니다.</EmptyMessage>
               ) : (
                 <FestivalSection>
-                  {data.wishfestivals &&
-                    data.wishfestivals.map((item, index) => (
+                  {data.wishFestivals &&
+                    data.wishFestivals.map((item) => (
                       <FestivalLink
                         key={item._id}
                         to={`/festival/detail/${item._id}`}
@@ -58,12 +58,12 @@ const WishListContainer = (): JSX.Element => {
             </WishSection>
             <WishSection>
               <WishSectionHead> Artist Wish List </WishSectionHead>
-              {data.wishArtist.length === 0 ? (
+              {data.wishArtists && data.wishArtists.length === 0 ? (
                 <EmptyMessage>찜해둔 아티스트가 없습니다.</EmptyMessage>
               ) : (
                 <ArtistSection>
-                  {data.wishArtist &&
-                    data.wishArtist.map((item) => (
+                  {data.wishArtists &&
+                    data.wishArtists.map((item) => (
                       <ArtistLink
                         key={item._id}
                         to={`/artist/detail/${item._id}`}
@@ -93,7 +93,7 @@ const BackgorundImage = styled.div`
   opacity: 0.3;
   background: radial-gradient(black 35%, transparent 1%),
     url('/images/wall2.jpg');
-  background-size: 3px 3px, contain;
+  background-size: 3px 3px, auto;
   z-index: -1;
 `;
 

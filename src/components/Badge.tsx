@@ -22,8 +22,8 @@ const Badge = ({
               .filter((item, index) => index < 5)
               .map((item) => (
                 <BadgeBox key={item._id}>
-                  <BadgeImage key={item._id} src={item.image} get={item.get} />
-                  <BadegName key={item._id}>{item.name}</BadegName>
+                  <BadgeImage src={item.image} get={item.get} />
+                  <BadegName>{item.name}</BadegName>
                 </BadgeBox>
               ))}
         </TitleBox>
@@ -36,8 +36,8 @@ const Badge = ({
               .filter((item, index) => index >= 5 && index < 10)
               .map((item) => (
                 <BadgeBox key={item._id}>
-                  <BadgeImage key={item._id} src={item.image} get={item.get} />
-                  <BadegName key={item._id}>{item.name}</BadegName>
+                  <BadgeImage src={item.image} get={item.get} />
+                  <BadegName>{item.name}</BadegName>
                 </BadgeBox>
               ))}
         </TitleBox>
@@ -50,8 +50,8 @@ const Badge = ({
               .filter((item, index) => index >= 10 && index < 15)
               .map((item) => (
                 <BadgeBox key={item._id}>
-                  <BadgeImage key={item._id} src={item.image} get={item.get} />
-                  <BadegName key={item._id}>{item.name}</BadegName>
+                  <BadgeImage src={item.image} get={item.get} />
+                  <BadegName>{item.name}</BadegName>
                 </BadgeBox>
               ))}
         </TitleBox>

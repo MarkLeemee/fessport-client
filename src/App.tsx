@@ -8,6 +8,7 @@ import ArtistListPage from './pages/ArtistListPage';
 import ArtistDetailPage from './pages/ArtistDetailPage';
 import FessportPage from './pages/FessportPage';
 import WishListPage from './pages/WishListPage';
+import AdminPage from './pages/AdminPage';
 
 const App = (): JSX.Element => {
   return (
@@ -21,6 +22,7 @@ const App = (): JSX.Element => {
         <Route path="/artist/detail/:_id" component={ArtistDetailPage} />
         <Route path="/fessport" component={FessportPage} />
         <Route path="/wishlist" component={WishListPage} />
+        <Route path="/admin" component={AdminPage} />
         <Redirect from="*" to="/" />
       </Switch>
     </BrowserRouter>

@@ -21,7 +21,7 @@ const userInfo = createReducer<UserInfoState, UserInfoAction>(initialState, {
     patchSucess: false,
     loading: true,
     error: null,
-    data: state.data,
+    data: null,
   }),
   [GET_USERINFO_DATA_SUCCESS]: (state, action) => ({
     patchSucess: false,

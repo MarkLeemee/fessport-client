@@ -28,10 +28,8 @@ const FessportContainer = (): JSX.Element => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!data) {
-      console.log('🐶🐶🐶🐶 UserInfo useEffect 🐶🐶🐶🐶');
-      dispatch(getUserInfoAsync.request());
-    }
+    console.log('🐶🐶🐶🐶 UserInfo useEffect 🐶🐶🐶🐶');
+    dispatch(getUserInfoAsync.request());
   }, []);
 
   useEffect(() => {
@@ -67,7 +65,6 @@ const FessportContainer = (): JSX.Element => {
     <>
       <BackgorundImage />
       {loading && <Loader />}
-      {error && <ErrorMessage />}
       {!isLogin ? (
         <NotLogin />
       ) : (
@@ -80,7 +77,7 @@ const FessportContainer = (): JSX.Element => {
               handleScrollDown={handleScrollDown}
             />
             <Collector
-              visit={data.visit}
+              visits={data.visits}
               collectorRef={collectorRef}
               handleScrollDown={handleScrollDown}
             />
@@ -88,6 +85,7 @@ const FessportContainer = (): JSX.Element => {
           </FessportPresenter>
         )
       )}
+      {error && <ErrorMessage />}
     </>
   );
 };
@@ -101,7 +99,7 @@ const BackgorundImage = styled.div`
   opacity: 0.3;
   background: radial-gradient(black 35%, transparent 1%),
     url('/images/wall2.jpg');
-  background-size: 3px 3px, contain;
+  background-size: 3px 3px, auto;
   z-index: -1;
 `;
 

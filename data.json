@@ -63,6 +63,146 @@
     {
       "_id": "f5",
       "name": "Glasto"
+    },
+    {
+      "_id": "f1",
+      "name": "UMF"
+    },
+    {
+      "_id": "f2",
+      "name": "Coachellla"
+    },
+    {
+      "_id": "f3",
+      "name": "Flow"
+    },
+    {
+      "_id": "f4",
+      "name": "Sensation"
+    },
+    {
+      "_id": "f5",
+      "name": "Glasto"
+    },
+    {
+      "_id": "f1",
+      "name": "UMF"
+    },
+    {
+      "_id": "f2",
+      "name": "Coachellla"
+    },
+    {
+      "_id": "f3",
+      "name": "Flow"
+    },
+    {
+      "_id": "f4",
+      "name": "Sensation"
+    },
+    {
+      "_id": "f5",
+      "name": "Glasto"
+    },
+    {
+      "_id": "f1",
+      "name": "UMF"
+    },
+    {
+      "_id": "f2",
+      "name": "Coachellla"
+    },
+    {
+      "_id": "f3",
+      "name": "Flow"
+    },
+    {
+      "_id": "f4",
+      "name": "Sensation"
+    },
+    {
+      "_id": "f5",
+      "name": "Glasto"
+    },
+    {
+      "_id": "f1",
+      "name": "UMF"
+    },
+    {
+      "_id": "f2",
+      "name": "Coachellla"
+    },
+    {
+      "_id": "f3",
+      "name": "Flow"
+    },
+    {
+      "_id": "f4",
+      "name": "Sensation"
+    },
+    {
+      "_id": "f5",
+      "name": "Glasto"
+    },
+    {
+      "_id": "f1",
+      "name": "UMF"
+    },
+    {
+      "_id": "f2",
+      "name": "Coachellla"
+    },
+    {
+      "_id": "f3",
+      "name": "Flow"
+    },
+    {
+      "_id": "f4",
+      "name": "Sensation"
+    },
+    {
+      "_id": "f5",
+      "name": "Glasto"
+    },
+    {
+      "_id": "f1",
+      "name": "UMF"
+    },
+    {
+      "_id": "f2",
+      "name": "Coachellla"
+    },
+    {
+      "_id": "f3",
+      "name": "Flow"
+    },
+    {
+      "_id": "f4",
+      "name": "Sensation"
+    },
+    {
+      "_id": "f5",
+      "name": "Glasto"
+    },
+    {
+      "_id": "f1",
+      "name": "UMF"
+    },
+    {
+      "_id": "f2",
+      "name": "Coachellla"
+    },
+    {
+      "_id": "f3",
+      "name": "Flow"
+    },
+    {
+      "_id": "f4",
+      "name": "Sensation"
+    },
+    {
+      "_id": "f5",
+      "name": "Glasto"
     }
   ],
   "artistCategory": [
@@ -85,51 +225,307 @@
     {
       "_id": "a5",
       "name": "GOD"
+    },{
+      "_id": "a1",
+      "name": "coldplay"
+    },
+    {
+      "_id": "a2",
+      "name": "metalica"
+    },
+    {
+      "_id": "a3",
+      "name": "SES"
+    },
+    {
+      "_id": "a4",
+      "name": "HOT"
+    },
+    {
+      "_id": "a5",
+      "name": "GOD"
+    },
+    {
+      "_id": "a1",
+      "name": "coldplay"
+    },
+    {
+      "_id": "a2",
+      "name": "metalica"
+    },
+    {
+      "_id": "a3",
+      "name": "SES"
+    },
+    {
+      "_id": "a4",
+      "name": "HOT"
+    },
+    {
+      "_id": "a5",
+      "name": "GOD"
+    },
+    {
+      "_id": "a1",
+      "name": "coldplay"
+    },
+    {
+      "_id": "a2",
+      "name": "metalica"
+    },
+    {
+      "_id": "a3",
+      "name": "SES"
+    },
+    {
+      "_id": "a4",
+      "name": "HOT"
+    },
+    {
+      "_id": "a5",
+      "name": "GOD"
+    },
+    {
+      "_id": "a1",
+      "name": "coldplay"
+    },
+    {
+      "_id": "a2",
+      "name": "metalica"
+    },
+    {
+      "_id": "a3",
+      "name": "SES"
+    },
+    {
+      "_id": "a4",
+      "name": "HOT"
+    },
+    {
+      "_id": "a5",
+      "name": "GOD"
+    },
+    {
+      "_id": "a1",
+      "name": "coldplay"
+    },
+    {
+      "_id": "a2",
+      "name": "metalica"
+    },
+    {
+      "_id": "a3",
+      "name": "SES"
+    },
+    {
+      "_id": "a4",
+      "name": "HOT"
+    },
+    {
+      "_id": "a5",
+      "name": "GOD"
+    },
+    {
+      "_id": "a1",
+      "name": "coldplay"
+    },
+    {
+      "_id": "a2",
+      "name": "metalica"
+    },
+    {
+      "_id": "a3",
+      "name": "SES"
+    },
+    {
+      "_id": "a4",
+      "name": "HOT"
+    },
+    {
+      "_id": "a5",
+      "name": "GOD"
+    },
+    {
+      "_id": "a1",
+      "name": "coldplay"
+    },
+    {
+      "_id": "a2",
+      "name": "metalica"
+    },
+    {
+      "_id": "a3",
+      "name": "SES"
+    },
+    {
+      "_id": "a4",
+      "name": "HOT"
+    },
+    {
+      "_id": "a5",
+      "name": "GOD"
+    },
+    {
+      "_id": "a1",
+      "name": "coldplay"
+    },
+    {
+      "_id": "a2",
+      "name": "metalica"
+    },
+    {
+      "_id": "a3",
+      "name": "SES"
+    },
+    {
+      "_id": "a4",
+      "name": "HOT"
+    },
+    {
+      "_id": "a5",
+      "name": "GOD"
     }
   ],
-  "festivalList": [
-    {
-      "_id": "fc1",
-      "total": 27,
-      "name": "saaaaaaaa",
-      "poster": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F90%2Fc5%2Fa3%2F90c5a3d26db3488182f28a44a962d501.png&type=a340",
-      "country": {
-        "_id": "60070d91a2b4f49b1cadeab8",
-        "name": "korea"
-      },
-      "genre": {
-        "_id": "6",
-        "name": "rokc"
-      }
-    },
-    {
-      "_id": "fc2",
-      "total": 27,
-      "name": "saaaaaaaa",
-      "poster": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F90%2Fc5%2Fa3%2F90c5a3d26db3488182f28a44a962d501.png&type=a340",
-      "country": {
-        "_id": "60070d91a2b4f49b1cadeab8",
-        "name": "korea"
-      },
-      "genre": {
-        "_id": "6",
-        "name": "rokc"
-      }
-    },
-    {
-      "_id": "fc3",
-      "total": 27,
-      "name": "saaaaaaaa",
-      "poster": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F90%2Fc5%2Fa3%2F90c5a3d26db3488182f28a44a962d501.png&type=a340",
-      "country": {
-        "_id": "60070d91a2b4f49b1cadeab8",
-        "name": "korea"
-      },
-      "genre": {
-        "_id": "6",
-        "name": "rokc"
-      }
-    }
+  "festivalList": [{
+    "_id": "1",
+  "total": "55",
+  "name": "Coachella",
+  "poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28",
+  "country": {
+    "_id": "1",
+    "name": "usa"
+  },
+  "genre": {
+    "_id": "2",
+    "genre": "rock"
+  }
+},
+{
+  "_id": "2",
+"total": "55",
+"name": "Coachella",
+"poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28",
+"country": {
+  "_id": "1",
+  "name": "usa"
+},
+"genre": {
+  "_id": "2",
+  "genre": "rock"
+}
+},
+{
+  "_id": "13",
+"total": "55",
+"name": "Coachella",
+"poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28",
+"country": {
+  "_id": "1",
+  "name": "usa"
+},
+"genre": {
+  "_id": "2",
+  "genre": "rock"
+}
+},
+{
+  "_id": "1324",
+"total": "55",
+"name": "Coachella",
+"poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28",
+"country": {
+  "_id": "1",
+  "name": "usa"
+},
+"genre": {
+  "_id": "2",
+  "genre": "rock"
+}
+},
+{
+  "_id": "4351",
+"total": "55",
+"name": "Coachella",
+"poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28",
+"country": {
+  "_id": "1",
+  "name": "usa"
+},
+"genre": {
+  "_id": "2",
+  "genre": "rock"
+}
+},
+{
+  "_id": "1345",
+"total": "55",
+"name": "Coachella",
+"poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28",
+"country": {
+  "_id": "1",
+  "name": "usa"
+},
+"genre": {
+  "_id": "2",
+  "genre": "rock"
+}
+},
+{
+  "_id": "6561",
+"total": "55",
+"name": "Coachella",
+"poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28",
+"country": {
+  "_id": "1",
+  "name": "usa"
+},
+"genre": {
+  "_id": "2",
+  "genre": "rock"
+}
+},
+{
+  "_id": "156",
+"total": "55",
+"name": "Coachella",
+"poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28",
+"country": {
+  "_id": "1",
+  "name": "usa"
+},
+"genre": {
+  "_id": "2",
+  "genre": "rock"
+}
+},
+{
+  "_id": "133",
+"total": "55",
+"name": "Coachella",
+"poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28",
+"country": {
+  "_id": "1",
+  "name": "usa"
+},
+"genre": {
+  "_id": "2",
+  "genre": "rock"
+}
+},
+{
+  "_id": "1333",
+"total": "55",
+"name": "Coachella",
+"poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28",
+"country": {
+  "_id": "1",
+  "name": "usa"
+},
+"genre": {
+  "_id": "2",
+  "genre": "rock"
+}
+}
   ],
   "festivalDetail": {
     "_id": "1",
@@ -286,7 +682,7 @@
       "_id": "fc12",
       "total": 27,
       "name": "saaaaaaaa",
-      "image": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F90%2Fc5%2Fa3%2F90c5a3d26db3488182f28a44a962d501.png&type=a340",
+      "image": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
       "country": {
         "_id": "60070d91a2b4f49b1cadeab8",
         "name": "korea"
@@ -300,7 +696,7 @@
       "_id": "fc13",
       "total": 27,
       "name": "saaaaaaaa",
-      "image": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F90%2Fc5%2Fa3%2F90c5a3d26db3488182f28a44a962d501.png&type=a340",
+      "image": "https://www.publicdomainpictures.net/pictures/320000/nahled/background-image.png",
       "country": {
         "_id": "60070d91a2b4f49b1cadeab8",
         "name": "korea"
@@ -342,7 +738,7 @@
       "_id": "fc16",
       "total": 27,
       "name": "saaaaaaaa",
-      "image": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F90%2Fc5%2Fa3%2F90c5a3d26db3488182f28a44a962d501.png&type=a340",
+      "image": "https://images.ctfassets.net/hrltx12pl8hq/7yQR5uJhwEkRfjwMFJ7bUK/dc52a0913e8ff8b5c276177890eb0129/offset_comp_772626-opt.jpg?fit=fill&w=800&h=300",
       "country": {
         "_id": "60070d91a2b4f49b1cadeab8",
         "name": "korea"
@@ -356,7 +752,7 @@
       "_id": "fc17",
       "total": 27,
       "name": "saaaaaaaa",
-      "image": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F90%2Fc5%2Fa3%2F90c5a3d26db3488182f28a44a962d501.png&type=a340",
+      "image": "https://i.pinimg.com/originals/af/8d/63/af8d63a477078732b79ff9d9fc60873f.jpg",
       "country": {
         "_id": "60070d91a2b4f49b1cadeab8",
         "name": "korea"
@@ -482,7 +878,7 @@
   "artistDetail": {
     "_id": "1",
     "name": "코첼라(COACHELLA)",
-    "image": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28",
+    "image": "https://dyl80ryjxr1ke.cloudfront.net/external_assets/hero_examples/hair_beach_v1785392215/original.jpeg",
     "description": "코첼라의 정식 명칭은 '코첼라 밸리 뮤직 앤드 아츠 페스티벌'로 미국 캘리포니아 주 인디오의 사막 지대 코첼라 밸리에서 매년 봄에 열린다. 미국에서 가장 유명한 페스티벌이다. 록, 인디, 힙합, 일렉트로닉 등 다양한 음악을 들을 수 있다. AC / DC , 에이미 와인 하우스 , 폴 매카트니 , 라디오 헤드 , 다프트 펑크 , 마돈나, 에미넴 , 제이지 , 비스티 보이즈 , 뮤즈 , 레드 핫 칠리 페퍼스 등이 무대에 섰었다.",
     "video": [
       "E07s5ZYygMg",
@@ -711,8 +1107,8 @@
     {
       "_id": 3,
       "name": "ph",
-      "y": 260,
-      "x": 1100,
+      "y": 270,
+      "x": 1105,
       "flagImage": "https://flagcdn.com/ph.svg",
       "festivals": [
         {
@@ -972,7 +1368,7 @@
     {
       "_id": 12,
       "name": "be",
-      "y": 120,
+      "y": 90,
       "x": 580,
       "flagImage": "https://flagcdn.com/be.svg",
       "festivals": [
@@ -1002,7 +1398,7 @@
       "_id": 13,
       "name": "fr",
       "y": 130,
-      "x": 560,
+      "x": 540,
       "flagImage": "https://flagcdn.com/fr.svg",
       "festivals": [
         {
@@ -1031,7 +1427,7 @@
       "_id": 14,
       "name": "de",
       "y": 120,
-      "x": 600,
+      "x": 610,
       "flagImage": "https://flagcdn.com/de.svg",
       "festivals": [
         {
@@ -1059,8 +1455,8 @@
     {
       "_id": 15,
       "name": "ie",
-      "y": 90,
-      "x": 530,
+      "y": 85,
+      "x": 510,
       "flagImage": "https://flagcdn.com/ie.svg",
       "festivals": [
         {
@@ -1234,7 +1630,7 @@
       "_id": 21,
       "name": "cz",
       "y": 130,
-      "x": 630,
+      "x": 640,
       "flagImage": "https://flagcdn.com/cz.svg",
       "festivals": [
         {
@@ -1262,8 +1658,8 @@
     {
       "_id": 22,
       "name": "gr",
-      "y": 170,
-      "x": 650,
+      "y": 180,
+      "x": 640,
       "flagImage": "https://flagcdn.com/gr.svg",
       "festivals": [
         {
@@ -1739,12 +2135,18 @@
         "poster": "https://t1.daumcdn.net/cfile/tistory/9942F3355CC15E2C28"
       }
     ],
-    "wishArtist": [
-     
-    ]
+    "wishArtist": []
   },
-  "visit": {},
-  "unvisited": {},
-  "like": {},
-  "dislike": {}
+  "visit": {
+    "festivalId": "fc2"
+  },
+  "unvisited": {
+    "festivalId": "fc2"
+  },
+  "like": {
+    "festivalId": "fc2"
+  },
+  "dislike": {
+    "festivalId": "fc2"
+  }
 }

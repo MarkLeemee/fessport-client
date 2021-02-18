@@ -223,7 +223,7 @@ const BackgorundImage = styled.div`
   opacity: 0.3;
   background: radial-gradient(black 35%, transparent 1%),
     url('/images/wall.jpg');
-  background-size: 3px 3px, contain;
+  background-size: 3px 3px, auto;
   z-index: -1;
 `;
 
@@ -450,6 +450,7 @@ const ArtistName = styled.div``;
 const ArtistImage = styled.img`
   width: 100%;
   height: 100%;
+  object-fit: cover;
 `;
 
 const StyledSlider = styled(Slider)`

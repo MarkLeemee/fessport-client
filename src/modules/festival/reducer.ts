@@ -113,13 +113,14 @@ const festival = createReducer<FestivalState, FestivalAction>(initialState, {
   [POST_VISITED_FESTIVAL]: (state) => ({
     ...state,
     festivalDetail: {
-      loading: false,
+      loading: true,
       error: null,
       data: state.festivalDetail.data,
     },
   }),
   [POST_VISITED_FESTIVAL_SUCCESS]: (state) => {
     if (state.festivalDetail.data) {
+      state.festivalDetail.loading = false;
       state.festivalDetail.data.visited = true;
     }
     return JSON.parse(JSON.stringify(state));
@@ -135,13 +136,14 @@ const festival = createReducer<FestivalState, FestivalAction>(initialState, {
   [POST_UNVISITED_FESTIVAL]: (state) => ({
     ...state,
     festivalDetail: {
-      loading: false,
+      loading: true,
       error: null,
       data: state.festivalDetail.data,
     },
   }),
   [POST_UNVISITED_FESTIVAL_SUCCESS]: (state, action) => {
     if (state.festivalDetail.data) {
+      state.festivalDetail.loading = false;
       state.festivalDetail.data.visited = false;
     }
     return JSON.parse(JSON.stringify(state));
@@ -157,13 +159,14 @@ const festival = createReducer<FestivalState, FestivalAction>(initialState, {
   [POST_LIKE_FESTIVAL]: (state) => ({
     ...state,
     festivalDetail: {
-      loading: false,
+      loading: true,
       error: null,
       data: state.festivalDetail.data,
     },
   }),
   [POST_LIKE_FESTIVAL_SUCCESS]: (state, action) => {
     if (state.festivalDetail.data) {
+      state.festivalDetail.loading = false;
       state.festivalDetail.data.isLiked = true;
     }
     return JSON.parse(JSON.stringify(state));
@@ -179,13 +182,14 @@ const festival = createReducer<FestivalState, FestivalAction>(initialState, {
   [POST_DISLIKE_FESTIVAL]: (state) => ({
     ...state,
     festivalDetail: {
-      loading: false,
+      loading: true,
       error: null,
       data: state.festivalDetail.data,
     },
   }),
   [POST_DISLIKE_FESTIVAL_SUCCESS]: (state, action) => {
     if (state.festivalDetail.data) {
+      state.festivalDetail.loading = false;
       state.festivalDetail.data.isLiked = false;
     }
     return JSON.parse(JSON.stringify(state));

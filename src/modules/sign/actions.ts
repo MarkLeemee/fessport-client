@@ -10,6 +10,9 @@ export const POST_SIGNUP = 'sign/POST_SIGNUP' as const;
 export const POST_SIGNUP_SUCCESS = 'sign/POST_SIGNUP_SUCCESS' as const;
 export const POST_SIGNUP_ERROR = 'sign/POST_SIGNUP_ERROR' as const;
 
+export const LOCAL_SIGNIN = 'sign/LOCAL_SIGNIN' as const;
+export const SIGNOUT = 'sign/SIGNOUT' as const;
+
 export const postSigninAsync = createAsyncAction(
   POST_SIGNIN,
   POST_SIGNIN_SUCCESS,
@@ -21,3 +24,6 @@ export const postSignupAsync = createAsyncAction(
   POST_SIGNUP_SUCCESS,
   POST_SIGNUP_ERROR,
 )<ISignupInfo, { message: string }, AxiosError>();
+
+export const localSignin = () => ({ type: LOCAL_SIGNIN });
+export const signout = () => ({ type: SIGNOUT });

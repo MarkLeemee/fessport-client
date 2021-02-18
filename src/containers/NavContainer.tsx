@@ -1,20 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { MyDropdown } from '../components/Nav';
-import { SignModal } from '../components/ModalSign';
+import ModalSign from '../components/ModalSign';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../modules';
+import { getUserInfoAsync } from '../modules/userInfo';
+import { localSignin, signout } from '../modules/sign';
 
 const NavContainer = (): JSX.Element => {
-  const [click, setClick] = useState(false);
-  const [myDropdown, setMyDropdwon] = useState(false);
+  const [clickedNavIcon, setClickedNavIcon] = useState(false);
+  const [isSignModal, setIsSignModal] = useState(false);
   const [topNav, setTopNav] = useState(true);
   const [topButton, setTopButton] = useState(false);
+  const { isLogin, userInfo, userInfoError } = useSelector(
+    (state: RootState) => ({
+      isLogin: state.sign.isLogin,
+      userInfo: state.userInfo.data,
+      userInfoError: state.userInfo.error,
+    }),
+  );
+  const dispatch = useDispatch();
 
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
-  const { isLogin } = useSelector((state: RootState) => state.sign);
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+  });
+
+  useEffect(() => {
+    const localIsLogin = localStorage.getItem('islogin');
+    if (localIsLogin) {
+      dispatch(getUserInfoAsync.request());
+    }
+  }, []);
+
+  useEffect(() => {
+    if (userInfoError) {
+      localStorage.removeItem('islogin');
+    } else if (userInfo) {
+      dispatch(localSignin());
+    }
+  }, [userInfoError, userInfo]);
 
   const handleScrollUp = () => {
     window.scrollTo({
@@ -29,103 +53,58 @@ const NavContainer = (): JSX.Element => {
     offsetTop > 100 ? setTopButton(true) : setTopButton(false);
   };
 
-  // function debounce(callback: any, milliseconds: number) {
-  //   let debounceCheck: any;
-  //   return function () {
-  //     clearTimeout(debounceCheck);
-  //     debounceCheck = setTimeout(() => {
-  //       callback();
-  //     }, milliseconds);
-  //   };
-  // }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-  });
-
-  const onMyMouseEnter = () => {
-    if (window.innerWidth < 960) {
-      setMyDropdwon(false);
-    } else {
-      setMyDropdwon(true);
-    }
+  const handleSignout = () => {
+    dispatch(signout());
+    localStorage.removeItem('islogin');
   };
-  const onMyMouseLeave = () => {
-    if (window.innerWidth < 960) {
-      setMyDropdwon(false);
-    } else {
-      setMyDropdwon(false);
-    }
-  };
-
-  const [isModalOpen, setModalState] = React.useState(false);
-  const toggleModal = (): void => setModalState(!isModalOpen);
 
   return (
     <>
-      <Container topNav={topNav}>
-        <Link to="/" className="nav-logo">
-          FESSPORT <i className="fas fa-passport"></i>
-        </Link>
-        <div className="menu-icon" onClick={handleClick}>
-          <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-        </div>
-        <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-          <li className="nav-item">
-            <Link
-              to="/festival/list"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              Festival
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/artist/list"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              Artist
-            </Link>
-          </li>
-
-          <li className="nav-item bar"> | </li>
-
-          <li
-            className="nav-item"
-            onMouseEnter={onMyMouseEnter}
-            onMouseLeave={onMyMouseLeave}
-          >
-            <Link
-              to="/fessport"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              Fessport <i className="fas fa-caret-down" />
-            </Link>
-            {myDropdown && <MyDropdown />}
-          </li>
+      {isSignModal && <ModalSign setIsSignModal={setIsSignModal} />}
+      <NavPresenter topNav={topNav}>
+        <MainPageLink to="/">
+          <i className="fas fa-passport"></i> FESSPORT{' '}
+        </MainPageLink>
+        <SubPage>
+          <SubPageLink to="/festival/list">Festival </SubPageLink>
+          <SubPageLink to="/artist/list">Artist</SubPageLink>
+          <FessportHover>
+            Fessport
+            <div className="SubFessport">
+              <Link to="/fessport">
+                <FessportSubPageLink>My Fessport</FessportSubPageLink>
+              </Link>
+              <Link to="/wishlist">
+                <FessportSubPageLink>Wish List</FessportSubPageLink>
+              </Link>
+            </div>
+          </FessportHover>
           {!isLogin ? (
-            <>
-              <li className="nav-item">
-                <li className="nav-item">
-                  <div className="nav-links" onClick={toggleModal}>
-                    SignIn
-                  </div>
-                </li>
-              </li>
-              <SignModal
-                title={'FESSPORT SIGN!'}
-                isOpen={isModalOpen}
-                onClose={toggleModal}
-              ></SignModal>
-            </>
+            <SignControll onClick={() => setIsSignModal(true)}>
+              Signin
+            </SignControll>
           ) : (
-            <div>logout</div>
+            <SignControll onClick={handleSignout}>Logout</SignControll>
           )}
-        </ul>
-      </Container>
+        </SubPage>
+        <NavIcon
+          onClick={() => {
+            setClickedNavIcon(!clickedNavIcon);
+          }}
+        >
+          <i className={clickedNavIcon ? 'fas fa-times' : 'fas fa-bars'} />
+        </NavIcon>
+      </NavPresenter>
+      {/* {clickedNavIcon && 
+      <ActiveBar>
+        <ActivLink></ActivLink>
+        <ActivLink></ActivLink>
+        <ActivLink></ActivLink>
+        <ActivLink></ActivLink>
+        <ActivLink></ActivLink>
+        <ActivLink></ActivLink>
+      </ActiveBar>
+      } */}
       {topButton && (
         <TopButton
           src="/images/up.png"
@@ -137,171 +116,121 @@ const NavContainer = (): JSX.Element => {
   );
 };
 
-const Container = styled.div<{ topNav: boolean }>`
+const NavIcon = styled.div`
+  display: none;
+  @media only screen and (max-width: 960px) {
+    display: block;
+    margin-right: 10%;
+  }
+`;
+
+const NavPresenter = styled.div<{ topNav: boolean }>`
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  z-index: 100;
-  height: 80px;
-  background: transparent;
-  height: 80px;
+  top: 0px;
+  left: 0px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  font-size: 1rem;
+  width: 100vw;
+  height: 80px;
   background-color: ${(props) =>
     props.topNav ? 'transparant' : 'rgb(21,21,31)'};
   transition: all 0.3s;
-
-  .wall {
-    margin-left: 2rem;
-  }
-
-  .nav-logo {
-    color: #fff;
-    justify-self: start;
-    /* margin-left: 20px; */
-    cursor: pointer;
-    /* width: 100%; */
-    text-decoration: none;
-    font-size: 2rem;
-  }
-  .fa-firstdraft {
-    margin-left: 0.5rem;
-    font-size: 1.6rem;
-  }
-  .nav-menu {
-    display: grid;
-    grid-template-columns: repeat(6, auto);
-    grid-gap: 10px;
-    list-style: none;
-    text-align: center;
-    width: 80vw;
-    /* margin-left: 10%;
-    margin-right: 10%; */
-    justify-content: end;
-    /* margin-right: 2rem; */
-  }
-  .nav-item {
-    display: flex;
-    align-items: center;
-    height: 80px;
-  }
-  .nav-links-image {
-    width: 150px;
-    display: flex;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-  }
-  .nav-links {
-    color: #ccc;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-  }
-  .nav-links:hover {
-    color: white;
-    border-radius: 4px;
-    transition: all 0.2s ease-out;
-  }
-  .fa-bars {
-    color: #fff;
-  }
-  .nav-links-mobile {
-    display: none;
-  }
-  .menu-icon {
-    display: none;
-  }
-
+  z-index: 99;
   @media only screen and (max-width: 960px) {
-    .NavbarItems {
-      position: relative;
-    }
-    .nav-menu {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      height: 90vh;
+  }
+`;
+
+const MainPageLink = styled(Link)`
+  margin-left: 10%;
+  font-size: 2rem;
+  z-index: 99;
+`;
+
+const SubPage = styled.div`
+  display: flex;
+  margin-right: 10%;
+  @media only screen and (max-width: 960px) {
+    display: none;
+  }
+`;
+
+const SubPageLink = styled(Link)`
+  width: 100%;
+  margin-right: 3rem;
+  white-space: nowrap;
+  font-size: 1rem;
+  color: rgba(170, 170, 170);
+  &:hover {
+    color: white;
+  }
+  @media only screen and (max-width: 960px) {
+  }
+`;
+
+const FessportHover = styled.ul`
+  position: relative;
+  width: 100%;
+  margin-right: 3rem;
+  white-space: nowrap;
+  font-size: 1rem;
+  color: rgba(170, 170, 170);
+  cursor: default;
+  .SubFessport {
+    display: none;
+  }
+  &:hover {
+    color: white;
+    .SubFessport {
       position: absolute;
-      top: 80px;
-      left: -100%;
-      opacity: 1;
-      transition: all 0.5s ease;
-    }
-    .nav-menu.active {
-      background: rgb(21, 21, 31);
-      left: 0;
-      opacity: 1;
-      transition: all 0.5s ease;
-      z-index: 1;
-    }
-    .nav-links {
-      text-align: center;
-      padding: 2rem;
-      width: 100%;
-      display: table;
-    }
-    .nav-links:hover {
-      background-color: #1888ff;
-      border-radius: 0;
-    }
-    .navbar-logo {
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform: translate(25%, 50%);
-    }
-    .menu-icon {
+      left: -10px;
       display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      transform: translate(-100%, 60%);
-      font-size: 1.8rem;
-      cursor: pointer;
+      width: 200%;
+      padding-top: 20px;
+      float: none;
     }
-    .fa-times {
-      color: #fff;
-      font-size: 2rem;
-    }
-    .nav-links-mobile {
-      display: block;
-      text-align: center;
-      padding: 1.5rem;
-      margin: 2rem auto;
-      border-radius: 4px;
-      width: 80%;
-      background: #1888ff;
-      text-decoration: none;
-      color: #fff;
-      font-size: 1.5rem;
-    }
-    .nav-links-mobile:hover {
-      background: #fff;
-      color: #1888ff;
-      transition: 250ms;
-    }
-    .bar {
-      display: none;
-    }
-    button {
-      display: none;
-    }
+  }
+  @media only screen and (max-width: 960px) {
+  }
+`;
+
+const FessportSubPageLink = styled.li`
+  width: 100%;
+  padding: 10px;
+  padding-top: 15px;
+  white-space: nowrap;
+  font-size: 1rem;
+  color: rgba(170, 170, 170);
+  border-bottom: 1px solid rgba(170, 170, 170, 0.8);
+  &:hover {
+    color: white;
+    background-color: rgba(170, 170, 170, 0.3);
+  }
+  @media only screen and (max-width: 960px) {
+  }
+`;
+
+const SignControll = styled.div`
+  width: 100%;
+  white-space: nowrap;
+  font-size: 1rem;
+  color: rgba(170, 170, 170);
+  cursor: pointer;
+  &:hover {
+    color: white;
+  }
+  @media only screen and (max-width: 960px) {
   }
 `;
 
 const TopButton = styled.img<{ topButton: boolean }>`
   position: fixed;
-  top: 80%;
+  top: 85%;
   left: 90%;
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  opacity: 0.9;
+  opacity: 0.8;
   z-index: 100;
 `;
 
