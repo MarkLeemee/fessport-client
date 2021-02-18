@@ -1,13 +1,11 @@
 import {
   POST_SIGNIN,
   POST_SIGNUP,
-  GET_SIGNOUT_SUCCESS,
   postSigninAsync,
   postSignupAsync,
-  getSignoutAsync,
 } from './actions';
 import { postSignin, postSignup } from '../../api/sign';
-import { call, put, takeLatest, takeEvery } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 
 function* postSigninSaga(action: ReturnType<typeof postSigninAsync.request>) {
   try {
@@ -27,16 +25,7 @@ function* postSignupSaga(action: ReturnType<typeof postSignupAsync.request>) {
   }
 }
 
-function* getSignoutSaga() {
-  try {
-    yield put(getSignoutAsync.success({ message: 'Signout' }));
-  } catch (e) {
-    yield put(getSignoutAsync.failure(e));
-  }
-}
-
 export function* signSaga() {
   yield takeLatest(POST_SIGNIN, postSigninSaga);
   yield takeLatest(POST_SIGNUP, postSignupSaga);
-  yield takeEvery(GET_SIGNOUT_SUCCESS, getSignoutSaga);
 }

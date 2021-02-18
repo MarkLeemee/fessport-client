@@ -67,13 +67,17 @@ const ModalSign = ({
 
   useEffect(() => {
     if (isLogin) {
+      localStorage.setItem('islogin', 'true');
       setMessage('');
+      setIsSignModal((state) => !state);
+      history.push('/');
+    } else if (signupSuccess) {
       setIsSignModal((state) => !state);
       history.push('/');
     } else if (error) {
       setMessage('SIGNIN/SIGNUP 작업에 실패하였습니다.');
     }
-  }, [isLogin, error]);
+  }, [isLogin, error, signupSuccess]);
 
   return (
     <SignPresenter onClick={() => setIsSignModal((state) => !state)}>

@@ -4,19 +4,41 @@ import styled from 'styled-components';
 import ModalSign from '../components/ModalSign';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../modules';
-import { getSignoutAsync } from '../modules/sign';
+import { getUserInfoAsync } from '../modules/userInfo';
+import { localSignin, signout } from '../modules/sign';
 
 const NavContainer = (): JSX.Element => {
   const [clickedNavIcon, setClickedNavIcon] = useState(false);
   const [isSignModal, setIsSignModal] = useState(false);
   const [topNav, setTopNav] = useState(true);
   const [topButton, setTopButton] = useState(false);
-  const { isLogin } = useSelector((state: RootState) => state.sign);
+  const { isLogin, userInfo, userInfoError } = useSelector(
+    (state: RootState) => ({
+      isLogin: state.sign.isLogin,
+      userInfo: state.userInfo.data,
+      userInfoError: state.userInfo.error,
+    }),
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
   });
+
+  useEffect(() => {
+    const localIsLogin = localStorage.getItem('islogin');
+    if (localIsLogin) {
+      dispatch(getUserInfoAsync.request());
+    }
+  }, []);
+
+  useEffect(() => {
+    if (userInfoError) {
+      localStorage.removeItem('islogin');
+    } else if (userInfo) {
+      dispatch(localSignin());
+    }
+  }, [userInfoError, userInfo]);
 
   const handleScrollUp = () => {
     window.scrollTo({
@@ -32,7 +54,8 @@ const NavContainer = (): JSX.Element => {
   };
 
   const handleSignout = () => {
-    dispatch(getSignoutAsync.request());
+    dispatch(signout());
+    localStorage.removeItem('islogin');
   };
 
   return (
@@ -45,7 +68,6 @@ const NavContainer = (): JSX.Element => {
         <SubPage>
           <SubPageLink to="/festival/list">Festival </SubPageLink>
           <SubPageLink to="/artist/list">Artist</SubPageLink>
-          <SubPageLink to="/artist/list">Community</SubPageLink>
           <FessportHover>
             Fessport
             <div className="SubFessport">

@@ -1,46 +1,26 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Fessport?
+![fessport](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FIGBlH%2FbtqXJV9wiHE%2FiWgAdB54L0Y6o6LPXCTpw0%2Fimg.png)
+ #### Fessport는 Festival과 Passport의 합성어로, 전 세계 뮤직 페스티벌 정보를 한 곳에서 제공하는 서비스입니다.
+ #### 이 외에도 페스티벌 collector 및 badge challenge와 같은 게임성과 동행 구하기, 티켓 거래 등 커뮤니티성을 덧붙인 세계 뮤직 페스티벌 종합 서비스입니다.
+# Link
+![fessport](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FoKAVn%2FbtqW4hcMRrN%2F6zrIwKOTFbSMWaHJZ2nAI0%2Fimg.gif)
+#### 해당 서비스에 더 자세히 알고 싶으시면 이하 링크를 참고 부탁드립니다 :)
+  - ## [Fessport 서비스 링크](https://bit.ly/3tOJYw4)
+  - ## [Fessport(Client) 프로젝트 및 기술스택 회고록](https://bit.ly/3qbi1fO)
+  - ## [Fessport(Client) 기능 리뷰](https://bit.ly/3rJcXiT)
+# Stack
+ - Client : Typescript, React, React-hooks, Redux, Redux-Saga, Styled Component
+ - Backend : Typescript, Node.js, Express, MongoDB, Multer
+ - Deploy : S3, CloudFront, EC2, Route53, MongoDB Atlas,
+ - Form : ESlint, Prettier, Git, Notion
+# Install
+```sh
+npm install
+```
+# Usage
+```sh
+npm run start
+```
+# Author
+- Frontend : 이종혁
+- Backend : 강희석, 이재원

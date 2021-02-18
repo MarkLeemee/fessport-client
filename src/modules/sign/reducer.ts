@@ -7,9 +7,8 @@ import {
   POST_SIGNUP,
   POST_SIGNUP_SUCCESS,
   POST_SIGNUP_ERROR,
-  GET_SIGNOUT,
-  GET_SIGNOUT_SUCCESS,
-  GET_SIGNOUT_ERROR,
+  LOCAL_SIGNIN,
+  SIGNOUT,
 } from './actions';
 
 const initialState: SignState = {
@@ -50,7 +49,7 @@ const sign = createReducer<SignState, SignAction>(initialState, {
     data: null,
   }),
   [POST_SIGNUP_SUCCESS]: (state, action) => ({
-    isLogin: true,
+    isLogin: false,
     signupSuccess: true,
     loading: false,
     error: null,
@@ -63,25 +62,18 @@ const sign = createReducer<SignState, SignAction>(initialState, {
     error: action.payload,
     data: null,
   }),
-  [GET_SIGNOUT]: (state) => ({
-    isLogin: false,
+  [LOCAL_SIGNIN]: (state) => ({
+    isLogin: true,
     signupSuccess: false,
-    loading: true,
+    loading: false,
     error: null,
     data: null,
   }),
-  [GET_SIGNOUT_SUCCESS]: (state, action) => ({
+  [SIGNOUT]: (state) => ({
     isLogin: false,
     signupSuccess: false,
     loading: false,
     error: null,
-    data: action.payload,
-  }),
-  [GET_SIGNOUT_ERROR]: (state, action) => ({
-    isLogin: false,
-    signupSuccess: false,
-    loading: false,
-    error: action.payload,
     data: null,
   }),
 });
